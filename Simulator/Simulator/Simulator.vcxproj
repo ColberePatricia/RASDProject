@@ -77,6 +77,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,13 +118,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AcceleratedNode.cpp" />
+    <ClCompile Include="Curriculum.cpp" />
+    <ClCompile Include="GroupOfResearchers.cpp" />
+    <ClCompile Include="HugeJob.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="ITStaff.cpp" />
+    <ClCompile Include="JobQueue.cpp" />
+    <ClCompile Include="LargeJob.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MediumJob.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Output.cpp" />
+    <ClCompile Include="Researcher.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="SchedulerInput.cpp" />
+    <ClCompile Include="SchedulerOutput.cpp" />
+    <ClCompile Include="ShortJob.cpp" />
+    <ClCompile Include="SpecializedNode.cpp" />
+    <ClCompile Include="StorageDevice.cpp" />
+    <ClCompile Include="Student.cpp" />
+    <ClCompile Include="TraditionalNode.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="UsersGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AcceleratedNode.h" />
+    <ClInclude Include="Curriculum.h" />
+    <ClInclude Include="GroupOfReaserchers.h" />
+    <ClInclude Include="HugeJob.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="ITStaff.h" />
+    <ClInclude Include="JobQueue.h" />
+    <ClInclude Include="LargeJob.h" />
+    <ClInclude Include="MediumJob.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Output.h" />
+    <ClInclude Include="Researcher.h" />
+    <ClInclude Include="Scheduler.h" />
+    <ClInclude Include="SchedulerInput.h" />
+    <ClInclude Include="SchedulerOutput.h" />
+    <ClInclude Include="ShortJob.h" />
+    <ClInclude Include="SpecializedNode.h" />
+    <ClInclude Include="StorageDevice.h" />
+    <ClInclude Include="Student.h" />
+    <ClInclude Include="TraditionalNode.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UsersGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
