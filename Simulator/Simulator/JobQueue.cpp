@@ -1,5 +1,6 @@
 #include "JobQueue.h"
 
+
 // Returns the job queues
 vector<int> JobQueue::getJobQueue() {
 	return jobQueue;

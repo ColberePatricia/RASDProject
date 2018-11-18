@@ -11,7 +11,14 @@ using namespace std;
 
 class User {
 public:
+	User(double userBudget, int userId);
+	double getBudget();
+	int getId();
+	void setBudget(double newBudget);
+
+private:
 	double budget;
+	int id;
 };
 
 #endif 

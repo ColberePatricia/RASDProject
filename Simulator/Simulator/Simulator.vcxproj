@@ -119,8 +119,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AcceleratedNode.cpp" />
-    <ClCompile Include="Curriculum.cpp" />
-    <ClCompile Include="GroupOfResearchers.cpp" />
     <ClCompile Include="HugeJobQueue.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="ITStaff.cpp" />
@@ -145,8 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcceleratedNode.h" />
-    <ClInclude Include="Curriculum.h" />
-    <ClInclude Include="GroupOfReaserchers.h" />
     <ClInclude Include="HugeJobQueue.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="ITStaff.h" />

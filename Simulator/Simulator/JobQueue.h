@@ -21,12 +21,10 @@ public:
 	// returns the id of the job removed
 	int removeFromJobQueue(int i);
 
-private:
 	// The queues of jobs are represented by vectors of int, 
 	// each int representing the id of each job in the queue.
 	vector<int> jobQueue;
 	double costPerMachineHour;
-	int maxSubsetOfMachine;
 	int maxNbOfHours;
 };
 

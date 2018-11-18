@@ -8,6 +8,7 @@ class ShortJobQueue: public JobQueue {
 public:
 	ShortJobQueue();
 
+	int maxNbOfNodes;
 };
 
 #endif 
