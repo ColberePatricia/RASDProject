@@ -26,6 +26,7 @@ public:
 	vector<int> jobQueue;
 	double costPerMachineHour;
 	int maxNbOfHours;
+	int maxNbOfNodes;
 };
 
 #endif 

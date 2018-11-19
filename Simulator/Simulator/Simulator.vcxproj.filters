@@ -51,19 +51,7 @@
     <ClCompile Include="JobQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StorageDevice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TraditionalNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AcceleratedNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpecializedNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Job.cpp">
@@ -116,19 +104,7 @@
     <ClInclude Include="JobQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StorageDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TraditionalNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AcceleratedNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpecializedNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Job.h">

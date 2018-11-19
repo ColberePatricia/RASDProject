@@ -1,4 +1,3 @@
-#include "AcceleratedNode.h"
 #include "HugeJobQueue.h"
 #include "Input.h"
 #include "ITStaff.h"
@@ -11,10 +10,7 @@
 #include "SchedulerInput.h"
 #include "SchedulerOutput.h"
 #include "ShortJobQueue.h"
-#include "SpecializedNode.h"
-#include "StorageDevice.h"
 #include "Student.h"
-#include "TraditionalNode.h"
 #include "UsersGenerator.h"
 
 double evaluatorOfScheduler();

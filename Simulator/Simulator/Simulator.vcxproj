@@ -118,7 +118,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AcceleratedNode.cpp" />
     <ClCompile Include="HugeJobQueue.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="ITStaff.cpp" />
@@ -134,15 +133,11 @@
     <ClCompile Include="SchedulerInput.cpp" />
     <ClCompile Include="SchedulerOutput.cpp" />
     <ClCompile Include="ShortJobQueue.cpp" />
-    <ClCompile Include="SpecializedNode.cpp" />
-    <ClCompile Include="StorageDevice.cpp" />
     <ClCompile Include="Student.cpp" />
-    <ClCompile Include="TraditionalNode.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UsersGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AcceleratedNode.h" />
     <ClInclude Include="HugeJobQueue.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="ITStaff.h" />
@@ -157,10 +152,7 @@
     <ClInclude Include="SchedulerInput.h" />
     <ClInclude Include="SchedulerOutput.h" />
     <ClInclude Include="ShortJobQueue.h" />
-    <ClInclude Include="SpecializedNode.h" />
-    <ClInclude Include="StorageDevice.h" />
     <ClInclude Include="Student.h" />
-    <ClInclude Include="TraditionalNode.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UsersGenerator.h" />
   </ItemGroup>

@@ -8,7 +8,6 @@ class LargeJobQueue: public JobQueue {
 public:
 	LargeJobQueue();
 
-	double maxPercentageOfCores;
 };
 
 #endif 

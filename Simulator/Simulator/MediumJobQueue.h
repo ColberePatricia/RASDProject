@@ -8,7 +8,6 @@ class MediumJobQueue: public JobQueue {
 public:
 	MediumJobQueue();
 
-	double maxPercentageOfCores;
 };
 
 #endif 
