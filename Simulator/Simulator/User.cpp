@@ -19,27 +19,25 @@ void User::spendBudget(double budgetSpent) {
 	budget = budget - budgetSpent;
 }
 
-Job User::createJobAndSendTosendJobToShortJobQueue(int nbOfNodes, int nbOfHours, int typeNode) {
+Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int typeNode, JobQueue jobq) {
 	Scheduler sch;
-	ShortJobQueue shortjq = sch.sjq;
-	double jobBudget = shortjq.costPerMachineHour * nbOfHours;
-	Job job = Job(jobBudget, nbOfNodes, nbOfHours, typeNode);
+	double jobBudget = jobq.costPerMachineHour * nbOfHours;
+	Job job = Job(jobBudget, nbOfNodes, nbOfHours, typeNode, getId());
 	// Check wether the user has enough budget to create the job
-	if (jobBudget > budget) {
+	if (jobBudget > getBudget()) {
 		cout << "Not enough budget to create this job!\n";
-		return Job(NULL, NULL, NULL, NULL);
+		return Job(NULL, NULL, NULL, NULL, NULL);
 	}
 
-	if (job.nbHours <= shortjq.maxNbOfHours && job.nbNodes <= sjq.maxNbOfNodes) {
-
+	if (job.nbHours <= jobq.maxNbOfHours && job.nbNodes <= jobq.maxNbOfNodes) {
+		jobq.addToJobQueue(job);
+		spendBudget(jobBudget);
+		sch.treatJobInQueue(job, jobq);
 	}
 	else {
 		cout << "The number of hours or of nodes is too high for this queue!\n";
-		return Job(NULL, NULL, NULL, NULL);
+		return Job(NULL, NULL, NULL, NULL, NULL);
 	}
-	shortjq.addToJobQueue(job);
-	spendBudget(jobBudget);
-	sch.treatJobInQueue(job, shortjq);
 
-	return Job(jobBudget, nbOfNodes, nbOfHours, typeNode);
+	return Job(jobBudget, nbOfNodes, nbOfHours, typeNode, getId());
 }

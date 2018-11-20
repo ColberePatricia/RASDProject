@@ -12,7 +12,7 @@ using namespace std;
 class Job {
 public:
 	// typeNode = 0 for a traditional node, 1 for an accelerated node, 2 for a specialized node
-	Job(double jobBudget, int nbOfNodes, int nbOfHours, int typeNode);
+	Job(double jobBudget, int nbOfNodes, int nbOfHours, int typeNode, int userId);
 
 	double budget;
 	int nbNodes;

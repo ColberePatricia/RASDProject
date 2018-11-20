@@ -22,7 +22,7 @@ public:
 	int getId();
 	void spendBudget(double budgetSpent);
 	// typeNode = 0 for a traditional node, 1 for an accelerated node, 2 for a specialized node
-	Job createJobAndSendTosendJobToShortJobQueue(int nbOfNodes, int nbOfHours, int typeNode);
+	Job createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int typeNode, JobQueue jobq);
 
 private:
 	double budget;
