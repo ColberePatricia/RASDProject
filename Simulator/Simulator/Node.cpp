@@ -14,3 +14,23 @@ Node::Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpeci
 	specializedNodes = Matrix(nbOfHoursPerWeek, nbOfSpecializedNodes);
 }
 
+void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
+	int indexOfTime = startTime;
+	int nbOfNodesUsed = 0;
+	bool emptyNodesAtTimeStep;
+
+	for (int i = startTime; i < nodes.getNrows(); i++) {
+		for (int j = 0; j < nodes.getNcols() ; j++) {
+			if (nodes[i][j] == 0)
+				break;
+			
+		}
+		indexOfTime++;
+	}
+
+	while (nbOfNodesUsed < nbOfNodes) {
+
+	}
+	}
+}
+

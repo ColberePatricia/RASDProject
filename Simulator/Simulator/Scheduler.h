@@ -21,7 +21,7 @@ public:
 	// Will use the nodes and block them for the time asked
 	// Since it is a First In, First Out scheduler, the index of the job treated 
 	// in the job queue is 0
-	void treatJobInQueue(Job job, JobQueue jobQueue);
+	void treatJobInQueue(Job job, JobQueue jobQueue, Node node, int time);
 
 	ShortJobQueue sjq;
 	MediumJobQueue mjq;

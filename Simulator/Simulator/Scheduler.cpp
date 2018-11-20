@@ -1,8 +1,7 @@
 #include "Scheduler.h"
 
 
-void Scheduler::treatJobInQueue(Job job, JobQueue jobQueue) {
-	Node node;
+void Scheduler::treatJobInQueue(Job job, JobQueue jobQueue, Node node, int time) {
 	int nodeType = job.typeOfNode;
 
 	// We find the first available nodes of the right type
