@@ -11,6 +11,7 @@
 #include "MediumJobQueue.h"
 #include "LargeJobQueue.h"
 #include "HugeJobQueue.h"
+#include "Scheduler.h"
 using namespace std;
 
 
@@ -19,9 +20,9 @@ public:
 	User(double userBudget, int userId);
 	double getBudget();
 	int getId();
-	void setBudget(double newBudget);
 	void spendBudget(double budgetSpent);
-	Job createJobAndSendTosendJobToShortJobQueue(int nbOfNodes, int nbOfHours);
+	// typeNode = 0 for a traditional node, 1 for an accelerated node, 2 for a specialized node
+	Job createJobAndSendTosendJobToShortJobQueue(int nbOfNodes, int nbOfHours, int typeNode);
 
 private:
 	double budget;

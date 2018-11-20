@@ -7,7 +7,6 @@
 #include "Output.h"
 #include "Researcher.h"
 #include "Scheduler.h"
-#include "SchedulerInput.h"
 #include "SchedulerOutput.h"
 #include "ShortJobQueue.h"
 #include "Student.h"

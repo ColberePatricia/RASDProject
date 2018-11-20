@@ -125,12 +125,12 @@
     <ClCompile Include="JobQueue.cpp" />
     <ClCompile Include="LargeJobQueue.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="matrix.cpp" />
     <ClCompile Include="MediumJobQueue.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Researcher.cpp" />
     <ClCompile Include="Scheduler.cpp" />
-    <ClCompile Include="SchedulerInput.cpp" />
     <ClCompile Include="SchedulerOutput.cpp" />
     <ClCompile Include="ShortJobQueue.cpp" />
     <ClCompile Include="Student.cpp" />
@@ -144,12 +144,12 @@
     <ClInclude Include="Job.h" />
     <ClInclude Include="JobQueue.h" />
     <ClInclude Include="LargeJobQueue.h" />
+    <ClInclude Include="matrix.h" />
     <ClInclude Include="MediumJobQueue.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="Researcher.h" />
     <ClInclude Include="Scheduler.h" />
-    <ClInclude Include="SchedulerInput.h" />
     <ClInclude Include="SchedulerOutput.h" />
     <ClInclude Include="ShortJobQueue.h" />
     <ClInclude Include="Student.h" />
