@@ -23,7 +23,7 @@ public:
 	int removeFromJobQueue(int i);
 
 	// The queues of jobs are represented by vectors of jobs
-	vector<Job> jobQueue;
+	vector<Job> jobQueueVector;
 	double costPerMachineHour;
 	int maxNbOfHours;
 	int maxNbOfNodes;

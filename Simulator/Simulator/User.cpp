@@ -31,7 +31,7 @@ Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int 
 	if (job.nbHours <= jobq.maxNbOfHours && job.nbNodes <= jobq.maxNbOfNodes) {
 		jobq.addToJobQueue(job);
 		spendBudget(jobBudget);
-		sch.treatJobInQueue(job, jobq, node, time);
+		sch.treatJobInQueue(jobq, node, time);
 	}
 	else {
 		cout << "The number of hours or of nodes is too high for this queue!\n";

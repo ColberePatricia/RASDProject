@@ -16,21 +16,38 @@ Node::Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpeci
 
 void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
 	int indexOfTime = startTime;
+	int indexOfNode = 0;
 	int nbOfNodesUsed = 0;
-	bool emptyNodesAtTimeStep;
+	bool emptyNodesAtTimeStep = false;
+	int i = startTime;
+	int j = 0;
 
-	for (int i = startTime; i < nodes.getNrows(); i++) {
-		for (int j = 0; j < nodes.getNcols() ; j++) {
-			if (nodes[i][j] == 0)
-				break;
-			
+	// We find which is the first node we can use at a given start time
+	while (i < nodes.getNrows() && !emptyNodesAtTimeStep) {
+		while (j < nodes.getNcols() && !emptyNodesAtTimeStep) {
+			if (nodes[i][j] == 0) {
+				emptyNodesAtTimeStep = true;
+			}
+			j++;
+			if (!emptyNodesAtTimeStep)
+				indexOfNode++;
 		}
-		indexOfTime++;
+		j = 0;
+		i++;
+		if (!emptyNodesAtTimeStep)
+			indexOfTime++;
 	}
 
+	// The nodes that are used take the value of 1
 	while (nbOfNodesUsed < nbOfNodes) {
-
-	}
+		nodes[indexOfTime][indexOfNode] = 1;
+		if (indexOfNode == nodes.getNcols() - 1) {
+			indexOfNode = 0;
+			indexOfTime++;
+		}
+		else
+			indexOfNode++;
+		nbOfNodesUsed++;
 	}
 }
 
