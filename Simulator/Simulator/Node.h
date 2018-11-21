@@ -1,13 +1,8 @@
+#pragma once
 #ifndef NODE_H
 #define NODE_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <math.h>
-#include <fstream>
-#include "matrix.h"
-using namespace std;
+#include "IncludeFiles.h"
 
 
 class Node {
@@ -30,5 +25,6 @@ public:
 	Matrix traditionalNodes;
 	Matrix acceleratedNodes;
 	Matrix specializedNodes;
+};
 
 #endif 

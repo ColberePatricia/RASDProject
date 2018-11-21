@@ -1,7 +1,7 @@
 #include "Node.h"
 
 
-Node::Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpecializedNodes = 32) {
+Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNodes) {
 	nbOfTraditionalNodes = nbTraditionalNodes;
 	nbOfAcceleratedNodes = nbAcceleratedNodes;
 	nbOfSpecializedNodes = nbSpecializedNodes;

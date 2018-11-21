@@ -1,6 +1,8 @@
+#pragma once
 #ifndef MEDIUMJOBQUEUE_H
 #define MEDIUMJOBQUEUE_H
 
+#include "IncludeFiles.h"
 #include "JobQueue.h"
 
 

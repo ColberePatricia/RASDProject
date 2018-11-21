@@ -1,13 +1,8 @@
+#pragma once
 #ifndef USERSGENERATOR_H
 #define USERSGENERATOR_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <math.h>
-#include <fstream>
-using namespace std;
-
+#include "IncludeFiles.h"
 #include "ITStaff.h"
 #include "Researcher.h"
 #include "Student.h"

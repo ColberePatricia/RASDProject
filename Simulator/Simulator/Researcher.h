@@ -1,6 +1,8 @@
+#pragma once
 #ifndef RESEARCHER_H
 #define RESEARCHER_H
 
+#include "IncludeFiles.h"
 #include "User.h"
 
 

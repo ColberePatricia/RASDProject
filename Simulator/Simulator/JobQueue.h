@@ -1,14 +1,9 @@
+#pragma once
 #ifndef JOBQUEUE_H
 #define JOBQUEUE_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <math.h>
-#include <fstream>
+#include "IncludeFiles.h"
 #include "Job.h"
-using namespace std;
-
 
 class JobQueue {
 public:
@@ -20,7 +15,7 @@ public:
 
 	// Remove the ith element of the job queues,
 	// returns the id of the job removed
-	int removeFromJobQueue(int i);
+	void removeFromJobQueue(int i);
 
 	// The queues of jobs are represented by vectors of jobs
 	vector<Job> jobQueueVector;

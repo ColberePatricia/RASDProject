@@ -13,6 +13,6 @@ void JobQueue::addToJobQueue(Job job) {
 
 // Remove the element number i of the job queues,
 // returns the id of the job removed
-int JobQueue::removeFromJobQueue(int i) {
+void JobQueue::removeFromJobQueue(int i) {
 	jobQueueVector.erase(jobQueueVector.begin() + i);
 }

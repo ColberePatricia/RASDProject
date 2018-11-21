@@ -1,6 +1,8 @@
+#pragma once
 #ifndef ITSTAFF_H
 #define ITSTAFF_H
 
+#include "IncludeFiles.h"
 #include "User.h"
 
 

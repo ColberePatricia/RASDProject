@@ -1,11 +1,8 @@
+#pragma once
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <math.h>
-#include <fstream>
+#include "IncludeFiles.h"
 #include "Job.h"
 #include "JobQueue.h"
 #include "ShortJobQueue.h"
@@ -14,7 +11,6 @@
 #include "HugeJobQueue.h"
 #include "Node.h"
 
-using namespace std;
 
 
 class Scheduler {

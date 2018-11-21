@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HugeJobQueue.h" />
+    <ClInclude Include="IncludeFiles.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="ITStaff.h" />
     <ClInclude Include="Job.h" />

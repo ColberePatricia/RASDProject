@@ -1,6 +1,7 @@
 #ifndef VECTOR_H //Include guard
 #define VECTOR_H
 
+#include <math.h>
 #include <iostream> //Generic IO operations
 #include <fstream>  //File IO operations
 #include <stdexcept> //provides exceptions

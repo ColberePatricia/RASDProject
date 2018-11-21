@@ -1,12 +1,8 @@
+#pragma once
 #ifndef JOB_H
 #define JOB_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <math.h>
-#include <fstream>
-using namespace std;
+#include "IncludeFiles.h"
 
 
 class Job {

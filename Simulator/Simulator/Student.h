@@ -1,6 +1,8 @@
+#pragma once
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include "IncludeFiles.h"
 #include "User.h"
 
 

@@ -21,7 +21,8 @@ int main() {
 	int time = 0;
 	Scheduler sch;
 
-	Test test;
+	// Test test;
+
 	// First, we generate our users inside of the simulation with 10 it staff, 100 researchers, 1000 students
 	UsersGenerator ug(10, 100, 1000);
 
@@ -33,6 +34,8 @@ int main() {
 
 double evaluatorOfScheduler() {
 	double t1, t2;
+	t1 = 0;
+	t2 = 0;
 	// test multiple situations
 	return t2 - t1;
 }

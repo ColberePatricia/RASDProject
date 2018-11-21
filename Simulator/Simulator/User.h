@@ -1,18 +1,14 @@
+#pragma once
 #ifndef USER_H
 #define USER_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <math.h>
-#include <fstream>
+#include "IncludeFiles.h"
 #include "Job.h"
 #include "ShortJobQueue.h"
 #include "MediumJobQueue.h"
 #include "LargeJobQueue.h"
 #include "HugeJobQueue.h"
 #include "Scheduler.h"
-using namespace std;
 
 
 class User {
