@@ -14,7 +14,7 @@ Node::Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpeci
 	specializedNodes = Matrix(nbOfHoursPerWeek, nbOfSpecializedNodes);
 }
 
-void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
+void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
 	int indexOfTime = startTime;
 	int indexOfNode = 0;
 	int nbOfNodesUsed = 0;
@@ -29,13 +29,15 @@ void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
 				emptyNodesAtTimeStep = true;
 			}
 			j++;
-			if (!emptyNodesAtTimeStep)
+			if (!emptyNodesAtTimeStep) {
 				indexOfNode++;
+			}
+		}
+		if (!emptyNodesAtTimeStep) {
+			indexOfTime++;
 		}
 		j = 0;
 		i++;
-		if (!emptyNodesAtTimeStep)
-			indexOfTime++;
 	}
 
 	// The nodes that are used take the value of 1
