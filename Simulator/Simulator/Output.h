@@ -10,13 +10,10 @@ class Output {
 public:
 	void numberOfJobsProcessedInEachQueue(Scheduler sch);
 	void actualNumberOfMachineHoursConsumedByEachJob(Scheduler sch);
-	void utilizationRatio(Scheduler sch, int numberOfMachineHoursAvailable);
+	void utilizationRatio(Node node, int numberOfMachineHoursAvailable);
 	void pricePaidByTheUsers(UsersGenerator ug);
 	void averageWaitTimeInEachQueue(Scheduler sch);
-
-	// TO DO
 	void averageTurnaroundTimeRatio(Scheduler sch);
-
 	void economicBalanceOfTheCentre(UsersGenerator ug, double operatingCost);
 };
 

@@ -12,6 +12,7 @@ public:
 	Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpecializedNodes = 32);
 
 	void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, JobQueue jobQueue);
+	int getTotalNumberOfMachineHoursConsumed();
 
 	int nbOfHoursPerWeek;
 	int nbOfTraditionalNodes;

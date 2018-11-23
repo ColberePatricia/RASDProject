@@ -55,3 +55,35 @@ void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, Jo
 	jobQueue.addNewWaitTime(indexOfTime - startTime);
 }
 
+int Node::getTotalNumberOfMachineHoursConsumed() {
+	// If the machine has been used at a certain time, one of the nodes will have been used
+	// We weck at which times at least one of the nodes has been used
+	vector<int> sum_rows(traditionalNodes.getNrows(), 0);
+	int totalNbHours = 0;
+
+	for (unsigned int i = 0; i < traditionalNodes.getNrows(); i++) {
+		for (unsigned int j = 0; j < traditionalNodes.getNcols(); j++) {
+			sum_rows[i] += traditionalNodes[i][j];
+		}
+	}
+
+	for (unsigned int i = 0; i < acceleratedNodes.getNrows(); i++) {
+		for (unsigned int j = 0; j < acceleratedNodes.getNcols(); j++) {
+			sum_rows[i] += acceleratedNodes[i][j];
+		}
+	}
+
+	for (unsigned int i = 0; i < specializedNodes.getNrows(); i++) {
+		for (unsigned int j = 0; j < specializedNodes.getNcols(); j++) {
+			sum_rows[i] += specializedNodes[i][j];
+		}
+	}
+
+	for (unsigned int i = 0;i < sum_rows.size();i++) {
+		if (sum_rows[i] > 0)
+			totalNbHours++;
+	}
+
+	return totalNbHours;
+}
+

@@ -19,7 +19,7 @@ void Scheduler::treatJobInQueue(JobQueue jobQueue, Node node, int time) {
 		cout << "This type of node does not exist!";
 	}
 
-
+	jobQueue.addNewRunTime(job.nbHours);
 	jobQueue.numberOfJobsProcessedPlus1();
 	jobQueue.removeFromJobQueue(0);
 }

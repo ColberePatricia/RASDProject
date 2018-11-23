@@ -17,12 +17,8 @@ void Output::actualNumberOfMachineHoursConsumedByEachJob(Scheduler sch) {
 
 }
 
-void Output::utilizationRatio(Scheduler sch, int numberOfMachineHoursAvailable) {
-	cout << "Utilization ratio of the machine:\n";
-
-	for (unsigned int i = 0; i < sch.numberOfMachineHoursConsumed.size(); i++) {
-		cout << "Job " << (i + 1) << ": " << (double)(sch.numberOfMachineHoursConsumed[i] / numberOfMachineHoursAvailable) << "\n";
-	}
+void Output::utilizationRatio(Node node, int numberOfMachineHoursAvailable) {
+	cout << "Utilization ratio of the machine: " << (double)(node.getTotalNumberOfMachineHoursConsumed()/numberOfMachineHoursAvailable) << "\n";
 
 }
 
@@ -55,7 +51,11 @@ void Output::averageWaitTimeInEachQueue(Scheduler sch) {
 }
 
 void Output::averageTurnaroundTimeRatio(Scheduler sch) {
+	double averageTimeRatio;
+	averageTimeRatio = sch.sjq.getAverageTurnaroundTimeRatio() + sch.mjq.getAverageTurnaroundTimeRatio() + sch.ljq.getAverageTurnaroundTimeRatio() + sch.hjq.getAverageTurnaroundTimeRatio();
+	averageTimeRatio = (double)(averageTimeRatio / 4);
 
+	cout << "Average turnaround time ratio: " << averageTimeRatio << "\n";
 }
 
 void Output::economicBalanceOfTheCentre(UsersGenerator ug, double operatingCost) {

@@ -20,8 +20,11 @@ public:
 	void numberOfJobsProcessedPlus1();
 
 	void addNewWaitTime(int timeWaited);
+	void addNewRunTime(int timeRun);
 
 	double getAverageWaitTime();
+	double getAverageRunTime();
+	double getAverageTurnaroundTimeRatio();
 
 	// The queues of jobs are represented by vectors of jobs
 	vector<Job> jobQueueVector;
@@ -31,6 +34,7 @@ public:
 
 	int numberOfJobsProcessed;
 	vector<int> waitTime;
+	vector<int> runTime;
 };
 
 #endif 
