@@ -38,5 +38,7 @@ Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int 
 		return Job(NULL, NULL, NULL, NULL, NULL);
 	}
 
+	sch.numberOfMachineHoursConsumed.push_back(nbOfHours);
+
 	return Job(jobBudget, nbOfNodes, nbOfHours, typeNode, getId());
 }

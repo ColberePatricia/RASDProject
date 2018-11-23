@@ -17,11 +17,20 @@ public:
 	// returns the id of the job removed
 	void removeFromJobQueue(int i);
 
+	void numberOfJobsProcessedPlus1();
+
+	void addNewWaitTime(int timeWaited);
+
+	double getAverageWaitTime();
+
 	// The queues of jobs are represented by vectors of jobs
 	vector<Job> jobQueueVector;
 	double costPerMachineHour;
 	int maxNbOfHours;
 	int maxNbOfNodes;
+
+	int numberOfJobsProcessed;
+	vector<int> waitTime;
 };
 
 #endif 

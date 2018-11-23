@@ -36,9 +36,6 @@
     <ClCompile Include="ITStaff.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SchedulerOutput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Scheduler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -75,6 +72,9 @@
     <ClCompile Include="vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Input.h">
@@ -93,9 +93,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ITStaff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SchedulerOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scheduler.h">
@@ -135,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IncludeFiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

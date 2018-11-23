@@ -16,3 +16,19 @@ void JobQueue::addToJobQueue(Job job) {
 void JobQueue::removeFromJobQueue(int i) {
 	jobQueueVector.erase(jobQueueVector.begin() + i);
 }
+
+void JobQueue::numberOfJobsProcessedPlus1() {
+	numberOfJobsProcessed++;
+}
+
+void JobQueue::addNewWaitTime(int timeWaited) {
+	waitTime.push_back(timeWaited);
+}
+
+double JobQueue::getAverageWaitTime() {
+	double averageWaitTime = 0;
+	for (int i = 0; i < waitTime.size(); i++)
+		averageWaitTime += waitTime[i];
+	averageWaitTime = (double)(averageWaitTime / waitTime.size());
+}
+

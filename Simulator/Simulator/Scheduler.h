@@ -24,6 +24,8 @@ public:
 	MediumJobQueue mjq;
 	LargeJobQueue ljq;
 	HugeJobQueue hjq;
+
+	vector<int> numberOfMachineHoursConsumed;
 };
 
 #endif 

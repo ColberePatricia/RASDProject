@@ -3,7 +3,7 @@
 #define NODE_H
 
 #include "IncludeFiles.h"
-
+#include "JobQueue.h"
 
 class Node {
 public:
@@ -11,7 +11,7 @@ public:
 	// There are ... hours per week, so
 	Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpecializedNodes = 32);
 
-	void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes);
+	void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, JobQueue jobQueue);
 
 	int nbOfHoursPerWeek;
 	int nbOfTraditionalNodes;

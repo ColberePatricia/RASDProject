@@ -21,6 +21,10 @@ public:
 
 	// Creates the users generated for the simulation
 	UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents);
+
+	double getBudgetITStaff();
+	double getBudgetResearchers();
+	double getBudgetStudents();
 };
 
 #endif 

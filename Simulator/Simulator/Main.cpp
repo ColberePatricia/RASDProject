@@ -1,17 +1,5 @@
-#include "HugeJobQueue.h"
-#include "Input.h"
-#include "ITStaff.h"
-#include "Job.h"
-#include "LargeJobQueue.h"
-#include "MediumJobQueue.h"
 #include "Output.h"
-#include "Researcher.h"
-#include "Scheduler.h"
-#include "SchedulerOutput.h"
-#include "ShortJobQueue.h"
-#include "Student.h"
-#include "UsersGenerator.h"
-#include "Test.h"
+#include "Input.h"
 
 double evaluatorOfScheduler();
 

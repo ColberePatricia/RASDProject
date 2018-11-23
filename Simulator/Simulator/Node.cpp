@@ -14,7 +14,7 @@ Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNode
 	specializedNodes = Matrix(nbOfHoursPerWeek, nbOfSpecializedNodes);
 }
 
-void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
+void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, JobQueue jobQueue) {
 	int indexOfTime = startTime;
 	int indexOfNode = 0;
 	int nbOfNodesUsed = 0;
@@ -51,5 +51,7 @@ void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes) {
 			indexOfNode++;
 		nbOfNodesUsed++;
 	}
+
+	jobQueue.addNewWaitTime(indexOfTime - startTime);
 }
 
