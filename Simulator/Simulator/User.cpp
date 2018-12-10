@@ -4,6 +4,7 @@
 User::User(double userBudget, int userId) {
 	budget = userBudget;
 	id = userId;
+	budgetSpent = 0;
 }
 
 
@@ -11,12 +12,17 @@ double User::getBudget() {
 	return budget;
 }
 
+double User::getBudgetSpent() {
+	return budgetSpent;
+}
+
 int User::getId() {
 	return id;
 }
 
-void User::spendBudget(double budgetSpent) {
-	budget = budget - budgetSpent;
+void User::spendBudget(double budgetUserSpent) {
+	budget = budget - budgetUserSpent;
+	budgetSpent += budgetUserSpent;
 }
 
 Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int typeNode, JobQueue jobq, Node node, int time, Scheduler sch) {

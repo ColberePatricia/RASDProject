@@ -20,11 +20,16 @@ public:
 	vector<Student> StudentList;
 
 	// Creates the users generated for the simulation
-	UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents);
+	UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents, bool isBudgetInInput);
 
 	double getBudgetITStaff();
 	double getBudgetResearchers();
 	double getBudgetStudents();
+
+	double getBudgetSpentITStaff();
+	double getBudgetSpentResearchers();
+	double getBudgetSpentStudents();
+
 };
 
 #endif 

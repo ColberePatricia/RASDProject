@@ -27,17 +27,17 @@ void Output::pricePaidByTheUsers(UsersGenerator ug) {
 
 	cout << "By the IT staff members:\n";
 	for (unsigned int i = 0; i < ug.nbOfITStaff; i++) {
-		cout << "IT staff member " << (i + 1) << ": " << ug.ITStaffList[i].getBudget() << "\n";
+		cout << "IT staff member " << (i + 1) << ": " << ug.ITStaffList[i].getBudgetSpent() << "\n";
 	}
 	
 	cout << "By the researchers:\n";
 	for (unsigned int i = 0; i < ug.nbOfResearchers; i++) {
-		cout << "Researcher " << (i + 1) << ": " << ug.ResearcherList[i].getBudget() << "\n";
+		cout << "Researcher " << (i + 1) << ": " << ug.ResearcherList[i].getBudgetSpent() << "\n";
 	}
 
 	cout << "By the students:\n";
 	for (unsigned int i = 0; i < ug.nbOfStudents; i++) {
-		cout << "Student " << (i + 1) << ": " << ug.StudentList[i].getBudget() << "\n";
+		cout << "Student " << (i + 1) << ": " << ug.StudentList[i].getBudgetSpent() << "\n";
 	}
 }
 
@@ -59,7 +59,7 @@ void Output::averageTurnaroundTimeRatio(Scheduler sch) {
 }
 
 void Output::economicBalanceOfTheCentre(UsersGenerator ug, double operatingCost) {
-	double totalCostOfJobs = ug.getBudgetITStaff() + ug.getBudgetResearchers() + ug.getBudgetStudents();
+	double totalCostOfJobs = ug.getBudgetSpentITStaff() + ug.getBudgetSpentResearchers() + ug.getBudgetSpentStudents();
 
 	cout << "Economic balance of the center: " << (totalCostOfJobs - operatingCost) << "\n";
 }

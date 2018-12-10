@@ -3,6 +3,8 @@
 #define TEST_H
 
 #include "IncludeFiles.h"
+#include "Input.h"
+#include "TestOutput.h"
 
 
 class Test {
