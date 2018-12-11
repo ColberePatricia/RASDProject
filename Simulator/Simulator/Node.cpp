@@ -1,6 +1,5 @@
 #include "Node.h"
 
-
 Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNodes) {
 	nbOfTraditionalNodes = nbTraditionalNodes;
 	nbOfAcceleratedNodes = nbAcceleratedNodes;
@@ -14,7 +13,7 @@ Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNode
 	specializedNodes = Matrix(nbOfHoursPerWeek, nbOfSpecializedNodes);
 }
 
-void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, JobQueue jobQueue) {
+void Node::useNodes(Matrix &nodes, int duration, int startTime, int nbOfNodes, JobQueue &jobQueue) {
 	int indexOfTime = startTime;
 	int indexOfNode = 0;
 	int nbOfNodesUsed = 0;
@@ -42,7 +41,9 @@ void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, Jo
 
 	// The nodes that are used take the value of 1
 	while (nbOfNodesUsed < nbOfNodes) {
-		nodes[indexOfTime][indexOfNode] = 1;
+		if (indexOfTime < nodes.getNrows() && indexOfNode < nodes.getNcols())
+			nodes[indexOfTime][indexOfNode] = 1;
+
 		if (indexOfNode == nodes.getNcols() - 1) {
 			indexOfNode = 0;
 			indexOfTime++;
@@ -57,7 +58,7 @@ void Node::useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, Jo
 
 int Node::getTotalNumberOfMachineHoursConsumed() {
 	// If the machine has been used at a certain time, one of the nodes will have been used
-	// We weck at which times at least one of the nodes has been used
+	// We check at which times at least one of the nodes has been used
 	vector<int> sum_rows(traditionalNodes.getNrows(), 0);
 	int totalNbHours = 0;
 
@@ -83,7 +84,7 @@ int Node::getTotalNumberOfMachineHoursConsumed() {
 		if (sum_rows[i] > 0)
 			totalNbHours++;
 	}
-
+	
 	return totalNbHours;
 }
 

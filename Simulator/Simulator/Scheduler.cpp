@@ -1,7 +1,7 @@
 #include "Scheduler.h"
 
 
-void Scheduler::treatJobInQueue(JobQueue jobQueue, Node node, int time) {
+void Scheduler::treatJobInQueue(JobQueue &jobQueue, Node &node, int time) {
 	Job job = jobQueue.getJobQueue()[0];
 	int nodeType = job.typeOfNode;
 
@@ -18,6 +18,7 @@ void Scheduler::treatJobInQueue(JobQueue jobQueue, Node node, int time) {
 	else {
 		cout << "This type of node does not exist!";
 	}
+	
 
 	jobQueue.addNewRunTime(job.nbHours);
 	jobQueue.numberOfJobsProcessedPlus1();
