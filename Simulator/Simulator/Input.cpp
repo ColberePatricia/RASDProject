@@ -1,9 +1,6 @@
 #include "Input.h"
 
 void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
-	// If we are before Friday 5pm, where time is 104 hours, we use the short, medium and large queues
-	// else we use the huge queue
-
 	// We randomly choose which user will submit a job at this time ad what job it will be
 	if (time < 104) {
 		// The jobs are submitted to the short, medium and large queues
@@ -27,12 +24,10 @@ void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
 
 
 void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, Node &node, JobQueue &jq) {
-	// Every job is sent to the huge queue
-	// We choose the users who will send a job, each user can send one or no job at each time step,
-	// each user will have a chance of 1/20 to send a job
+
 	for (unsigned int itStaff = 0; itStaff < ug.ITStaffList.size(); itStaff++) {
+		// TODO
 		if (rand() % 20 == 0) {
-			// The user sends a job to the huge queue
 			// We choose the number of nodes of the job, its number of hours and its type of node
 			int typeNode = getTypeOfNodes();
 			int nbOfNodes = getNbOfNodes(typeNode, node, jq);
@@ -48,7 +43,6 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 
 	for (unsigned int researcher = 0; researcher < ug.ResearcherList.size(); researcher++) {
 		if (rand() % 20 == 0) {
-			// The user sends a job to the huge queue
 			// We choose the number of nodes of the job, its number of hours and its type of node
 			int typeNode = getTypeOfNodes();
 			int nbOfNodes = getNbOfNodes(typeNode, node, jq);
@@ -64,7 +58,6 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 
 	for (unsigned int student = 0; student < ug.StudentList.size(); student++) {
 		if (rand() % 20 == 0) {
-			// The user sends a job to the huge queue
 			// We choose the number of nodes of the job, its number of hours and its type of node
 			int typeNode = getTypeOfNodes();
 			int nbOfNodes = getNbOfNodes(typeNode, node, jq);
@@ -80,6 +73,7 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 }
 
 int Input::getNbOfNodes(int typeNode, Node &node, JobQueue &jq) {
+	//TODO
 	// We decide that the number of nodes taken by a job are between 1 and the max number of nodes of the queue
 	int nbNodes;
 	if (typeNode == 1)

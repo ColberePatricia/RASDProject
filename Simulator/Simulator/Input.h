@@ -18,8 +18,12 @@
 
 class Input {
 public:
+	// If we are before Friday 5pm, where time is 104 hours, we use the short, medium and large queues
+	// else we use the huge queue
 	void timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node);
 
+	// We choose the users who will send a job, each user can send one or no job at each time step
+	// each user will have a chance to send a job modeled by an exponential probability distribution
 	void startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, Node &node, JobQueue &jq);
 
 	int getNbOfNodes(int typeNode, Node &node, JobQueue &jq);
