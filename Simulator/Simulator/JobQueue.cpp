@@ -33,21 +33,32 @@ double JobQueue::getAverageWaitTime() {
 	double averageWaitTime = 0;
 	for (int i = 0; i < waitTime.size(); i++)
 		averageWaitTime += waitTime[i];
-	averageWaitTime = (double)(averageWaitTime / waitTime.size());
+	if (waitTime.size() > 0)
+		averageWaitTime = (double)(averageWaitTime / waitTime.size());
+	else
+		averageWaitTime = 0;
+	return averageWaitTime;
 }
 
 double JobQueue::getAverageRunTime() {
 	double averageRunTime = 0;
 	for (int i = 0; i < runTime.size(); i++)
 		averageRunTime += runTime[i];
-	averageRunTime = (double)(averageRunTime / runTime.size());
+	if (runTime.size() > 0)
+		averageRunTime = (double)(averageRunTime / runTime.size());
+	else
+		averageRunTime = 0;
+	return averageRunTime;
 }
 
 double JobQueue::getAverageTurnaroundTimeRatio() {
 	double ratio = 0;
 	ratio += getAverageWaitTime();
 	ratio += getAverageRunTime();
-	ratio = (double)(ratio / getAverageRunTime());
+	if (getAverageRunTime() > 0)
+		ratio = (double)(ratio / getAverageRunTime());
+	else
+		ratio = 0;
 	return ratio;
 }
 

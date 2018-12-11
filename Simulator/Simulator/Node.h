@@ -8,7 +8,7 @@
 class Node {
 public:
 	// By default we make 64 traditional nodes, 32 accelerated nodes and 32 specialized nodes.
-	// There are ... hours per week, so
+	// There are 168 hours per week, so 168 rows for each matrix
 	Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpecializedNodes = 32);
 
 	void useNodes(Matrix nodes, int duration, int startTime, int nbOfNodes, JobQueue jobQueue);

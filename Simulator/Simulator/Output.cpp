@@ -64,4 +64,26 @@ void Output::economicBalanceOfTheCentre(UsersGenerator ug, double operatingCost)
 	cout << "Economic balance of the center: " << (totalCostOfJobs - operatingCost) << "\n";
 }
 
+void Output::showTraditionalNodes(Node node) {
+	cout << "\nTraditional Nodes:\n";
+	showNodes(node.traditionalNodes);
+}
 
+void Output::showAcceleratedNodes(Node node) {
+	cout << "\nAccelerated Nodes:\n";
+	showNodes(node.acceleratedNodes);
+}
+
+void Output::showSpecializedNodes(Node node) {
+	cout << "\nSpecialized Nodes:\n";
+	showNodes(node.specializedNodes);
+}
+
+void Output::showNodes(Matrix nodes) {
+	for (unsigned int i = 0;i < nodes.getNrows();i++) {
+		for (unsigned int j = 0;j < nodes.getNcols();j++) {
+			cout << nodes[i][j] << " ";
+		}
+		cout << "\n";
+	}
+}

@@ -14,7 +14,7 @@ UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents,
 			cin >> budget;
 		}
 		else {
-			budget = 168;
+			budget = 1680.0;
 		}
 		ITStaffList.push_back(ITStaff(budget, id));
 		id++;
@@ -25,7 +25,7 @@ UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents,
 			cin >> budget;
 		}
 		else {
-			budget = 80 + (rand() % 81);
+			budget = 800.0 + (rand() % 801);
 		}
 		ResearcherList.push_back(Researcher(budget, id));
 		id++;
@@ -36,7 +36,7 @@ UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents,
 			cin >> budget;
 		}
 		else {
-			budget = 48;
+			budget = 480.0;
 		}
 		StudentList.push_back(Student(budget, id));
 		id++;

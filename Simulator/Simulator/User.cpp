@@ -26,11 +26,16 @@ void User::spendBudget(double budgetUserSpent) {
 }
 
 Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int typeNode, JobQueue jobq, Node node, int time, Scheduler sch) {
+	// TODO
+	if (time == 160) {
+		cout << "NB NODES: " << nbOfNodes << " NB HOURS: " << nbOfHours << " Type Node: " << typeNode << "\n";
+	}
 	double jobBudget = jobq.costPerMachineHour * nbOfHours;
 	Job job = Job(jobBudget, nbOfNodes, nbOfHours, typeNode, getId());
 	// Check wether the user has enough budget to create the job
 	if (jobBudget > getBudget()) {
 		cout << "Not enough budget to create this job!\n";
+		cout << "Budget needed: " << jobBudget << " Budget possessed: " << getBudget() << "\n";
 		return Job(NULL, NULL, NULL, NULL, NULL);
 	}
 	
@@ -39,8 +44,12 @@ Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int 
 		spendBudget(jobBudget);
 		sch.treatJobInQueue(jobq, node, time);
 	}
+	else if (job.nbHours > jobq.maxNbOfHours) {
+		cout << "The number of hours is too high for this queue!\n";
+		return Job(NULL, NULL, NULL, NULL, NULL);
+	}
 	else {
-		cout << "The number of hours or of nodes is too high for this queue!\n";
+		cout << "The number of nodes is too high for this queue!\n";
 		return Job(NULL, NULL, NULL, NULL, NULL);
 	}
 

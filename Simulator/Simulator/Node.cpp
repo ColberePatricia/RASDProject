@@ -6,7 +6,7 @@ Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNode
 	nbOfAcceleratedNodes = nbAcceleratedNodes;
 	nbOfSpecializedNodes = nbSpecializedNodes;
 
-	nbOfHoursPerWeek = 80;
+	nbOfHoursPerWeek = 168;
 
 	// The matrix is initialised to contain zeros, so the nodes are initialised to be free
 	traditionalNodes =  Matrix(nbOfHoursPerWeek, nbOfTraditionalNodes);

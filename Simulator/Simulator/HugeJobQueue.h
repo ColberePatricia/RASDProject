@@ -4,6 +4,7 @@
 
 #include "IncludeFiles.h"
 #include "JobQueue.h"
+#include "Node.h"
 
 
 class HugeJobQueue: public JobQueue {

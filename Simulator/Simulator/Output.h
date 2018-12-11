@@ -15,6 +15,11 @@ public:
 	void averageWaitTimeInEachQueue(Scheduler sch);
 	void averageTurnaroundTimeRatio(Scheduler sch);
 	void economicBalanceOfTheCentre(UsersGenerator ug, double operatingCost);
+
+	void showTraditionalNodes(Node node);
+	void showAcceleratedNodes(Node node);
+	void showSpecializedNodes(Node node);
+	void showNodes(Matrix nodes);
 };
 
 #endif 
