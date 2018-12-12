@@ -23,10 +23,9 @@ int main() {
 
 	// Test test;
 
-
+	Input input;
 	// Each user generates jobs at certain times up to its budget
 	while (time <= numberOfMachineHoursAvailable) {
-		Input input;
 		input.timeStep(time, ug, sch, node);
 		time++;
 	}
@@ -44,6 +43,7 @@ int main() {
 	out.showTraditionalNodes(node);
 	out.showAcceleratedNodes(node);
 	out.showSpecializedNodes(node);
+
 
 	return 0;
 }

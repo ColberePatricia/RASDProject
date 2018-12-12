@@ -131,7 +131,6 @@
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Researcher.cpp" />
     <ClCompile Include="Scheduler.cpp" />
-    <ClCompile Include="TestOutput.cpp" />
     <ClCompile Include="ShortJobQueue.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Test.cpp" />
@@ -153,7 +152,6 @@
     <ClInclude Include="Output.h" />
     <ClInclude Include="Researcher.h" />
     <ClInclude Include="Scheduler.h" />
-    <ClInclude Include="TestOutput.h" />
     <ClInclude Include="ShortJobQueue.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Test.h" />

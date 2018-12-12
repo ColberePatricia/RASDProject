@@ -35,6 +35,11 @@ public:
 	int numberOfJobsProcessed;
 	vector<int> waitTime;
 	vector<int> runTime;
+	// This lambda is used to calculate the number of nodes used for a job sent to each queue,
+	// it is used because we generate the number of nodes according to an exponential distribution
+	double lambda;
+	// The factor is also used to calculate the number of nodes, based on how many nodes we approximately want for the queue
+	int exponentialDistributionFactor;
 };
 
 #endif 

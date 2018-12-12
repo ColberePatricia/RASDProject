@@ -1,9 +1,2 @@
 ﻿  Main.cpp
-  Output.cpp
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(32): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(37): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(42): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(91): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(92): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
   Simulator.vcxproj -> D:\Cranfield work\Requirements Analysis and System Design\simulator project\Simulator\Debug\Simulator.exe

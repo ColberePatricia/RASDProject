@@ -26,11 +26,11 @@ void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
 void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, Node &node, JobQueue &jq) {
 
 	for (unsigned int itStaff = 0; itStaff < ug.ITStaffList.size(); itStaff++) {
-		// TODO
-		if (rand() % 20 == 0) {
+		// For the IT Staff we choose lambda = 2.0
+		if (generateNumberFromExponentialDistribution(2.0) <= 0.1) {
 			// We choose the number of nodes of the job, its number of hours and its type of node
 			int typeNode = getTypeOfNodes();
-			int nbOfNodes = getNbOfNodes(typeNode, node, jq);
+			int nbOfNodes = getNbOfNodes(node, jq);
 			int nbOfHours = getNbOfHours(3, jq);
 
 			// If the duration of a job starting before Friday 5pm makes it last after Friday 5pm, it is not accepted so that the machine is free for the weekend queue
@@ -42,10 +42,11 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 	}
 
 	for (unsigned int researcher = 0; researcher < ug.ResearcherList.size(); researcher++) {
-		if (rand() % 20 == 0) {
+		// For the researchers we choose lambda = 1.5
+		if (generateNumberFromExponentialDistribution(1.5) <= 0.1) {
 			// We choose the number of nodes of the job, its number of hours and its type of node
 			int typeNode = getTypeOfNodes();
-			int nbOfNodes = getNbOfNodes(typeNode, node, jq);
+			int nbOfNodes = getNbOfNodes(node, jq);
 			int nbOfHours = getNbOfHours(3, jq);
 
 			// If the duration of the job makes it last after Friday 5pm, it is not accepted so that the machine is free for the weekend queue
@@ -57,10 +58,11 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 	}
 
 	for (unsigned int student = 0; student < ug.StudentList.size(); student++) {
-		if (rand() % 20 == 0) {
+		// For the students we choose lambda = 0.5
+		if (generateNumberFromExponentialDistribution(0.5) <= 0.1) {
 			// We choose the number of nodes of the job, its number of hours and its type of node
 			int typeNode = getTypeOfNodes();
-			int nbOfNodes = getNbOfNodes(typeNode, node, jq);
+			int nbOfNodes = getNbOfNodes(node, jq);
 			int nbOfHours = getNbOfHours(3, jq);
 
 			// If the duration of the job makes it last after Friday 5pm, it is not accepted so that the machine is free for the weekend queue
@@ -72,16 +74,14 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 	}
 }
 
-int Input::getNbOfNodes(int typeNode, Node &node, JobQueue &jq) {
-	//TODO
+int Input::getNbOfNodes(Node &node, JobQueue &jq) {
+	int nbNodes = (int)(jq.exponentialDistributionFactor * generateNumberFromExponentialDistribution(jq.lambda));
+
 	// We decide that the number of nodes taken by a job are between 1 and the max number of nodes of the queue
-	int nbNodes;
-	if (typeNode == 1)
-		nbNodes = 1 + rand() % jq.maxNbOfNodes;
-	else if (typeNode == 2)
-		nbNodes = 1 + rand() % jq.maxNbOfNodes;
-	else // We default to traditional nodes if the type is 0 or false
-		nbNodes = 1 + rand() % jq.maxNbOfNodes;
+	if (nbNodes < 1)
+		nbNodes = 1;
+	else if (nbNodes > jq.maxNbOfNodes)
+		nbNodes = jq.maxNbOfNodes;
 
 	return nbNodes;
 }
@@ -109,4 +109,19 @@ int Input::getTypeOfNodes() {
 		typeNode = 0;
 
 	return typeNode;
+}
+
+double Input::generateNumberFromExponentialDistribution(double lambda) {
+	random_device rd;
+	mt19937 generator(rd());
+	exponential_distribution <double> distribution(lambda);
+	double res = distribution(generator);
+
+	return res;
+}
+
+void Input::printNumbersFromExponentialDistribution(double lambda, int iterations) {
+	for (int i = 0;i < iterations;i++) {
+		cout << generateNumberFromExponentialDistribution(lambda) << "\n";
+	}
 }

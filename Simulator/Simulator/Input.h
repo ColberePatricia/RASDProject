@@ -15,6 +15,7 @@
 #include "Student.h"
 #include "UsersGenerator.h"
 #include "Test.h"
+#include <random>
 
 class Input {
 public:
@@ -26,10 +27,13 @@ public:
 	// each user will have a chance to send a job modeled by an exponential probability distribution
 	void startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, Node &node, JobQueue &jq);
 
-	int getNbOfNodes(int typeNode, Node &node, JobQueue &jq);
+	int getNbOfNodes(Node &node, JobQueue &jq);
 	// If the queue is short, typeOfQueue is 0, if it is medium 1, large 2, huge 3
 	int getNbOfHours(int typeOfQueue, JobQueue &jq);
 	int getTypeOfNodes();
+
+	double generateNumberFromExponentialDistribution(double lambda);
+	void printNumbersFromExponentialDistribution(double lambda, int iterations);
 
 };
 
