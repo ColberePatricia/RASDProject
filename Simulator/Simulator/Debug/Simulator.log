@@ -1,3 +1,6 @@
 ﻿  Test.cpp
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(32): warning C4101: 'out': unreferenced local variable
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(38): warning C4101: 'out': unreferenced local variable
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(93): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(96): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(99): warning C4018: '<': signed/unsigned mismatch
   Simulator.vcxproj -> D:\Cranfield work\Requirements Analysis and System Design\simulator project\Simulator\Debug\Simulator.exe

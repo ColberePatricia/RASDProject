@@ -4,6 +4,7 @@
 
 
 void Test::testSimulation() {
+	cout << "Test of the simulation\n\n";
 	testInput();
 	testOutput();
 	testJob();
@@ -19,13 +20,18 @@ void Test::testSimulation() {
 	testITStaff();
 	testResearcher();
 	testStudent();
+	cout << "All the tests have been successful!\n\n";
 }
 
 
 
 
 void Test::testInput() {
-
+	Input in;
+	UsersGenerator ug = UsersGenerator(5, 30, 500, false);
+	Scheduler sch;
+	Node node;
+	in.timeStep(7, ug, sch, node);
 }
 
 void Test::testOutput() {
@@ -52,16 +58,54 @@ void Test::testNode() {
 	assert(node.acceleratedNodes.getNrows() == node.nbOfHoursPerWeek && node.acceleratedNodes.getNcols() == node.nbOfAcceleratedNodes);
 	assert(node.specializedNodes.getNrows() == node.nbOfHoursPerWeek && node.specializedNodes.getNcols() == node.nbOfSpecializedNodes);
 
-	// TODO
+	MediumJobQueue mjq;
+	node.useNodes(node.traditionalNodes, 15, 200, mjq);
+	
+	Matrix resultTradiNodes = Matrix(node.nbOfHoursPerWeek, node.nbOfTraditionalNodes);
+	for (int i = 15;i < 18;i++) {
+		for (int j = 0;j < resultTradiNodes.getNcols();j++)
+			resultTradiNodes[i][j] = 1;
+	}
 
+	for (int j = 0;j < 8;j++)
+		resultTradiNodes[18][j] = 1;
+
+	assert(node.traditionalNodes == resultTradiNodes);
+	assert(mjq.getAverageWaitTime() == 0);
+	assert(mjq.getAverageRunTime() == 3);
+
+	assert(node.getTotalNumberOfMachineHoursConsumed() == 4);
 }
 
 void Test::testScheduler() {
+	Scheduler sch;
+	Node node;
+	Job job(60, 36, 2, 0, 36);
+	sch.mjq.addToJobQueue(job);
+	sch.treatJobInQueue(sch.mjq, node, 16);
 
 }
 
 void Test::testUsersGenerator() {
+	UsersGenerator ugRandomBudget(2, 10, 20, false);
+	UsersGenerator ugChosenBudget(0, 0, 0, true);
 
+	for (int i = 0;i < ugRandomBudget.ITStaffList.size();i++)
+		assert(ugRandomBudget.ITStaffList[i].getBudget() == 1680.0);
+	
+	for (int i = 0;i < ugRandomBudget.ITStaffList.size();i++)
+		assert(ugRandomBudget.ResearcherList[i].getBudget() >= 800.0 && ugRandomBudget.ResearcherList[i].getBudget() <=1600.0);
+
+	for (int i = 0;i < ugRandomBudget.ITStaffList.size();i++)
+		assert(ugRandomBudget.StudentList[i].getBudget() == 480.0);
+
+	assert(ugRandomBudget.getBudgetITStaff() == 3360);
+	assert(ugRandomBudget.getBudgetResearchers() >= 10 * 800.0 && ugRandomBudget.getBudgetResearchers() <= 10 * 1600.0);
+	assert(ugRandomBudget.getBudgetStudents() == 9600);
+
+	assert(ugRandomBudget.getBudgetSpentITStaff() == 0);
+	assert(ugRandomBudget.getBudgetSpentResearchers() == 0);
+	assert(ugRandomBudget.getBudgetSpentStudents() == 0);
 }
 
 
@@ -138,7 +182,6 @@ void Test::testShortJobQueue() {
 void Test::testUser() {
 	User user(700, 34);
 
-	assert(user.getBudget() == 700);
 	assert(user.getId() == 34);
 	assert(user.getBudgetSpent() == 0);
 
@@ -157,14 +200,20 @@ void Test::testUser() {
 
 void Test::testITStaff() {
 	ITStaff itstaff(1000, 53);
+	assert(itstaff.getId() == 53);
+	assert(itstaff.getBudget() == 1000);
 }
 
 void Test::testResearcher() {
 	Researcher researcher(800, 38);
+	assert(researcher.getId() == 38);
+	assert(researcher.getBudget() == 800);
 }
 
 void Test::testStudent() {
 	Student student(300, 95);
+	assert(student.getId() == 95);
+	assert(student.getBudget() == 300);
 }
 
 
