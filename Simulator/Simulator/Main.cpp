@@ -21,8 +21,6 @@ int main() {
 	// We use the default values for the budgets
 	UsersGenerator ug(2, 5, 20, false);
 
-	// Test test;
-
 	Input input;
 	// Each user generates jobs at certain times up to its budget
 	while (time <= numberOfMachineHoursAvailable) {
@@ -43,6 +41,10 @@ int main() {
 	out.showTraditionalNodes(node);
 	out.showAcceleratedNodes(node);
 	out.showSpecializedNodes(node);
+
+
+	Test test;
+	test.testSimulation();
 
 
 	return 0;

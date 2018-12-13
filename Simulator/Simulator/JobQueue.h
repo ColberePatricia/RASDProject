@@ -7,6 +7,8 @@
 
 class JobQueue {
 public:
+	JobQueue();
+
 	// Returns the job queues
 	vector<Job> getJobQueue();
 

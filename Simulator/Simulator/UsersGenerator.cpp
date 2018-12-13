@@ -2,6 +2,10 @@
 
 // Creates the users generated for the simulation
 UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents, bool isBudgetInInput) {
+	assert(nbITStaff >= 0);
+	assert(nbResearchers >= 0);
+	assert(nbStudents >= 0);
+
 	nbOfITStaff = nbITStaff;
 	nbOfResearchers = nbResearchers;
 	nbOfStudents = nbStudents;

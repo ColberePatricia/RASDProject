@@ -10,7 +10,6 @@
 #include "MediumJobQueue.h"
 #include "Researcher.h"
 #include "Scheduler.h"
-#include "TestOutput.h"
 #include "ShortJobQueue.h"
 #include "Student.h"
 #include "UsersGenerator.h"

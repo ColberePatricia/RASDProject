@@ -1,6 +1,9 @@
 #include "Input.h"
 
 void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
+	// We check if the time is possible within the week
+	assert(time >= 0 && time <= 168);
+
 	// We randomly choose which user will submit a job at this time ad what job it will be
 	if (time < 104) {
 		// The jobs are submitted to the short, medium and large queues
@@ -24,6 +27,8 @@ void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
 
 
 void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, Node &node, JobQueue &jq) {
+	// We check if the time is possible within the week
+	assert(time >= 0 && time <= 168);
 
 	for (unsigned int itStaff = 0; itStaff < ug.ITStaffList.size(); itStaff++) {
 		// For the IT Staff we choose lambda = 2.0
@@ -87,6 +92,8 @@ int Input::getNbOfNodes(Node &node, JobQueue &jq) {
 }
 
 int Input::getNbOfHours(int typeOfQueue, JobQueue &jq) {
+	assert(typeOfQueue >= 0 && typeOfQueue <= 3);
+
 	int nbHours;
 	if (typeOfQueue == 0)
 		nbHours = 1;
@@ -94,7 +101,7 @@ int Input::getNbOfHours(int typeOfQueue, JobQueue &jq) {
 		nbHours = 2 + rand() % (jq.maxNbOfHours - 1);
 	else if (typeOfQueue == 2)
 		nbHours = 9 + rand() % (jq.maxNbOfHours - 8);
-	else if (typeOfQueue == 3)
+	else
 		nbHours = 1 + rand() % (jq.maxNbOfHours);
 
 	return nbHours;
@@ -112,6 +119,8 @@ int Input::getTypeOfNodes() {
 }
 
 double Input::generateNumberFromExponentialDistribution(double lambda) {
+	assert(lambda > 0);
+
 	random_device rd;
 	mt19937 generator(rd());
 	exponential_distribution <double> distribution(lambda);
@@ -121,6 +130,9 @@ double Input::generateNumberFromExponentialDistribution(double lambda) {
 }
 
 void Input::printNumbersFromExponentialDistribution(double lambda, int iterations) {
+	assert(lambda > 0);
+	assert(iterations > 0);
+
 	for (int i = 0;i < iterations;i++) {
 		cout << generateNumberFromExponentialDistribution(lambda) << "\n";
 	}

@@ -20,6 +20,8 @@ void Output::actualNumberOfMachineHoursConsumedByEachJob(Scheduler &sch) {
 }
 
 void Output::utilizationRatio(Node &node, int numberOfMachineHoursAvailable) {
+	assert(numberOfMachineHoursAvailable > 0);
+
 	cout << "Utilization ratio of the machine: " << ((double)(node.getTotalNumberOfMachineHoursConsumed()))/((double)numberOfMachineHoursAvailable) << "\n";
 
 	cout << "\n";
@@ -66,6 +68,8 @@ void Output::averageTurnaroundTimeRatio(Scheduler &sch) {
 }
 
 void Output::economicBalanceOfTheCentre(UsersGenerator &ug, double operatingCost) {
+	assert(operatingCost >= 0);
+
 	double totalCostOfJobs = ug.getBudgetSpentITStaff() + ug.getBudgetSpentResearchers() + ug.getBudgetSpentStudents();
 
 	cout << "Economic balance of the center: " << (totalCostOfJobs - operatingCost) << "\n";

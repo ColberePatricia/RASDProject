@@ -1,6 +1,11 @@
 #include "Node.h"
 
 Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNodes) {
+	assert(nbTraditionalNodes >= 0);
+	assert(nbAcceleratedNodes >= 0);
+	assert(nbSpecializedNodes >= 0);
+	assert(nbTraditionalNodes + nbAcceleratedNodes + nbSpecializedNodes >= 128);
+
 	nbOfTraditionalNodes = nbTraditionalNodes;
 	nbOfAcceleratedNodes = nbAcceleratedNodes;
 	nbOfSpecializedNodes = nbSpecializedNodes;
@@ -13,7 +18,10 @@ Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNode
 	specializedNodes = Matrix(nbOfHoursPerWeek, nbOfSpecializedNodes);
 }
 
-void Node::useNodes(Matrix &nodes, int duration, int startTime, int nbOfNodes, JobQueue &jobQueue) {
+void Node::useNodes(Matrix &nodes, int startTime, int nbOfNodes, JobQueue &jobQueue) {
+	assert(startTime >= 0 && startTime <= nbOfHoursPerWeek);
+	assert(nbOfNodes >= 0);
+
 	int indexOfTime = startTime;
 	int indexOfNode = 0;
 	int nbOfNodesUsed = 0;
@@ -39,6 +47,9 @@ void Node::useNodes(Matrix &nodes, int duration, int startTime, int nbOfNodes, J
 		i++;
 	}
 
+	jobQueue.addNewWaitTime(indexOfTime - startTime);
+	int startJobTime = indexOfTime;
+
 	// The nodes that are used take the value of 1
 	while (nbOfNodesUsed < nbOfNodes) {
 		if (indexOfTime < nodes.getNrows() && indexOfNode < nodes.getNcols())
@@ -53,7 +64,7 @@ void Node::useNodes(Matrix &nodes, int duration, int startTime, int nbOfNodes, J
 		nbOfNodesUsed++;
 	}
 
-	jobQueue.addNewWaitTime(indexOfTime - startTime);
+	jobQueue.addNewRunTime(indexOfTime - startJobTime);
 }
 
 int Node::getTotalNumberOfMachineHoursConsumed() {

@@ -11,7 +11,7 @@ public:
 	// There are 168 hours per week, so 168 rows for each matrix
 	Node(int nbTraditionalNodes = 64, int nbAcceleratedNodes = 32, int nbSpecializedNodes = 32);
 
-	void useNodes(Matrix &nodes, int duration, int startTime, int nbOfNodes, JobQueue &jobQueue);
+	void useNodes(Matrix &nodes, int startTime, int nbOfNodes, JobQueue &jobQueue);
 	int getTotalNumberOfMachineHoursConsumed();
 
 	int nbOfHoursPerWeek;

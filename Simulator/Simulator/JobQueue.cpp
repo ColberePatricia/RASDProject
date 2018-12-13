@@ -1,5 +1,8 @@
 #include "JobQueue.h"
 
+JobQueue::JobQueue() {
+	numberOfJobsProcessed = 0;
+}
 
 // Returns the job queues
 vector<Job> JobQueue::getJobQueue() {
@@ -11,9 +14,13 @@ void JobQueue::addToJobQueue(Job job) {
 	jobQueueVector.push_back(job);
 }
 
-// Remove the element number i of the job queues,
+// Remove the element index i of the job queues,
 // returns the id of the job removed
 void JobQueue::removeFromJobQueue(int i) {
+	// We check that i is a possible index of the job queue vector
+	assert(i >= 0);
+	assert(i < jobQueueVector.size());
+
 	jobQueueVector.erase(jobQueueVector.begin() + i);
 }
 
@@ -22,10 +29,14 @@ void JobQueue::numberOfJobsProcessedPlus1() {
 }
 
 void JobQueue::addNewWaitTime(int timeWaited) {
+	assert(timeWaited >= 0);
+
 	waitTime.push_back(timeWaited);
 }
 
 void JobQueue::addNewRunTime(int timeRun) {
+	assert(timeRun >= 0);
+
 	runTime.push_back(timeRun);
 }
 
