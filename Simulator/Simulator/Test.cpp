@@ -1,7 +1,5 @@
 #include "Test.h"
 
-// Unit testing
-
 
 void Test::testSimulation() {
 	cout << "Test of the simulation\n\n";

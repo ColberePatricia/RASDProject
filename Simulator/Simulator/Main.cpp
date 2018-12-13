@@ -1,7 +1,6 @@
 #include "Output.h"
 #include "Input.h"
 
-double evaluatorOfScheduler();
 
 // We choose to represent the time in the week beginning on Monday 9am and ending on the next Monday 9am, 
 // so that we begin with the short, medium and large queues, and end with the huge queue
@@ -46,15 +45,12 @@ int main() {
 	Test test;
 	test.testSimulation();
 
+	EvaluatorOfScheduler eval;
+	eval.evaluation();
+
 
 	return 0;
 }
 
-double evaluatorOfScheduler() {
-	double t1, t2;
-	t1 = 0;
-	t2 = 0;
-	// test multiple situations
-	return t2 - t1;
-}
+
 

@@ -14,6 +14,7 @@
 #include "Student.h"
 #include "UsersGenerator.h"
 #include "Test.h"
+#include "EvaluatorOfScheduler.h"
 #include <random>
 
 class Input {
