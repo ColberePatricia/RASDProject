@@ -5,6 +5,7 @@
 #include "IncludeFiles.h"
 #include "Input.h"
 #include "Output.h"
+#include "EvaluatorOfScheduler.h"
 
 
 class Test {
@@ -17,6 +18,7 @@ public:
 	void testNode();
 	void testScheduler();
 	void testUsersGenerator();
+	void testEvaluatorOfScheduler();
 
 	void testJobQueue();
 	void testHugeJobQueue();

@@ -9,6 +9,7 @@ void Test::testSimulation() {
 	testNode();
 	testScheduler();
 	testUsersGenerator();
+	testEvaluatorOfScheduler();
 	testJobQueue();
 	testHugeJobQueue();
 	testLargeJobQueue();
@@ -104,6 +105,10 @@ void Test::testUsersGenerator() {
 	assert(ugRandomBudget.getBudgetSpentITStaff() == 0);
 	assert(ugRandomBudget.getBudgetSpentResearchers() == 0);
 	assert(ugRandomBudget.getBudgetSpentStudents() == 0);
+}
+
+void Test::testEvaluatorOfScheduler() {
+	EvaluatorOfScheduler eval;
 }
 
 
