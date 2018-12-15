@@ -10,8 +10,12 @@
 
 class Test {
 public:
+	// The test of the whole simulation
 	void testSimulation();
 
+
+	// The individual unit tests of each class in the simulation
+	
 	void testInput();
 	void testOutput();
 	void testJob();

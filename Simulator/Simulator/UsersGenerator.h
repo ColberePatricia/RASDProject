@@ -10,6 +10,20 @@
 
 class UsersGenerator {
 public:
+	// Creates the users generated for the simulation
+	UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents, bool isBudgetInInput);
+
+	// Returns the total budget of all the members of a user class
+	double getBudgetITStaff();
+	double getBudgetResearchers();
+	double getBudgetStudents();
+
+	// Returns the total budget spent by all the members of a user class
+	double getBudgetSpentITStaff();
+	double getBudgetSpentResearchers();
+	double getBudgetSpentStudents();
+
+
 	int nbOfITStaff;
 	int nbOfResearchers;
 	int nbOfStudents;
@@ -19,16 +33,6 @@ public:
 	vector<Researcher> ResearcherList;
 	vector<Student> StudentList;
 
-	// Creates the users generated for the simulation
-	UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents, bool isBudgetInInput);
-
-	double getBudgetITStaff();
-	double getBudgetResearchers();
-	double getBudgetStudents();
-
-	double getBudgetSpentITStaff();
-	double getBudgetSpentResearchers();
-	double getBudgetSpentStudents();
 
 };
 

@@ -1,13 +1,14 @@
 #include "User.h"
 
-// Creates the users generated for the simulation
-User::User(double userBudget, int userId) {
+// Creates a user generated for the simulation
+User::User(double userBudget, int userId, double cap) {
 	assert(userBudget > 0);
 	assert(userId >= 0);
 
 	budget = userBudget;
 	id = userId;
 	budgetSpent = 0;
+	instantaneousCap = cap;
 }
 
 
@@ -23,6 +24,11 @@ int User::getId() {
 	return id;
 }
 
+double User::getInstantaneousCap() {
+	return instantaneousCap;
+}
+
+
 void User::spendBudget(double budgetUserSpent) {
 	assert(budgetUserSpent >= 0);
 
@@ -37,6 +43,11 @@ Job User::createJobAndSendTosendJobToJobQueue(int nbOfNodes, int nbOfHours, int 
 	assert(time >= 0 && time <= 168);
 
 	double jobBudget = jobq.costPerMachineHour * nbOfHours;
+	if (jobBudget > getInstantaneousCap()) {
+		cout << "Instantaneous cap too low to create this job!" << " Budget needed: " << jobBudget << " Cap: " << getInstantaneousCap() << "\n";
+		return Job(NULL, NULL, NULL, NULL, NULL);
+	}
+
 	Job job = Job(jobBudget, nbOfNodes, nbOfHours, typeNode, getId());
 	// Check wether the user has enough budget to create the job
 	if (jobBudget > getBudget()) {

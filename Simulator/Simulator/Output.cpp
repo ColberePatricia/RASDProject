@@ -1,5 +1,23 @@
 #include "Output.h"
 
+void Output::outputResultsOfTheSimulation(Scheduler &sch, Node &node, UsersGenerator &ug, int numberOfMachineHoursAvailable, double operatingCost) {
+	cout << "\n\nResults of the simulation\n";
+	
+	numberOfJobsProcessedInEachQueue(sch);
+	actualNumberOfMachineHoursConsumedByEachJob(sch);
+	utilizationRatio(node, numberOfMachineHoursAvailable);
+	pricePaidByTheUsers(ug);
+	averageWaitTimeInEachQueue(sch);
+	averageTurnaroundTimeRatio(sch);
+	economicBalanceOfTheCentre(ug, operatingCost);
+
+	showTraditionalNodes(node);
+	showAcceleratedNodes(node);
+	showSpecializedNodes(node);
+	
+	cout << "\n\n";
+}
+
 void Output::numberOfJobsProcessedInEachQueue(Scheduler &sch) {
 	cout << "Number of jobs processed in each queue:\n";
 	cout << "Short job queue: " << sch.sjq.numberOfJobsProcessed << "\n";

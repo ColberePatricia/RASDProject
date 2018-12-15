@@ -1,6 +1,6 @@
 #include "UsersGenerator.h"
 
-// Creates the users generated for the simulation
+// Creates all of the users generated for the simulation
 UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents, bool isBudgetInInput) {
 	assert(nbITStaff >= 0);
 	assert(nbResearchers >= 0);
@@ -10,8 +10,9 @@ UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents,
 	nbOfResearchers = nbResearchers;
 	nbOfStudents = nbStudents;
 	double budget;
-
 	int id = 0;
+
+	// We create the IT staff members
 	for (unsigned int i = 0; i < nbOfITStaff; i++) {
 		if (isBudgetInInput) {
 			cout << "Input Budget for the IT staff number " << i << ":\n";
@@ -23,6 +24,8 @@ UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents,
 		ITStaffList.push_back(ITStaff(budget, id));
 		id++;
 	}
+
+	// We create the researchers
 	for (unsigned int i = 0; i < nbOfResearchers; i++) {
 		if (isBudgetInInput) {
 			cout << "Input Budget for the researcher number " << i << ":\n";
@@ -34,6 +37,8 @@ UsersGenerator::UsersGenerator(int nbITStaff, int nbResearchers, int nbStudents,
 		ResearcherList.push_back(Researcher(budget, id));
 		id++;
 	}
+
+	// We create the students
 	for (unsigned int i = 0; i < nbOfStudents; i++) {
 		if (isBudgetInInput) {
 			cout << "Input Budget for the student number " << i << ":\n";

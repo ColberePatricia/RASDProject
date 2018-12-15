@@ -12,7 +12,7 @@ Node::Node(int nbTraditionalNodes, int nbAcceleratedNodes, int nbSpecializedNode
 
 	nbOfHoursPerWeek = 168;
 
-	// The matrix is initialised to contain zeros, so the nodes are initialised to be free
+	// The matrix is initialised to contain zeros, so the nodes are initialised the same way
 	traditionalNodes =  Matrix(nbOfHoursPerWeek, nbOfTraditionalNodes);
 	acceleratedNodes = Matrix(nbOfHoursPerWeek, nbOfAcceleratedNodes);
 	specializedNodes = Matrix(nbOfHoursPerWeek, nbOfSpecializedNodes);
@@ -29,7 +29,7 @@ void Node::useNodes(Matrix &nodes, int startTime, int nbOfNodes, JobQueue &jobQu
 	int i = startTime;
 	int j = 0;
 
-	// We find which is the first node we can use at a given start time
+	// We find which is the first node we can use from a given start time
 	while (i < nodes.getNrows() && !emptyNodesAtTimeStep) {
 		while (j < nodes.getNcols() && !emptyNodesAtTimeStep) {
 			if (nodes[i][j] == 0) {

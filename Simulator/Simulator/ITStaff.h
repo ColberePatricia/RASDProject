@@ -8,7 +8,7 @@
 
 class ITStaff : public User {
 public:
-	ITStaff(int newBudget, int newid);
+	ITStaff(int newBudget, int newid, double cap = 1680.0);
 };
 
 #endif 

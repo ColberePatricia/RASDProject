@@ -8,7 +8,7 @@
 
 class Researcher : public User {
 public:
-	Researcher(int newBudget, int newid);
+	Researcher(int newBudget, int newid, double cap = 1600.0);
 
 };
 

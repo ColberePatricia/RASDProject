@@ -19,7 +19,7 @@ void Test::testSimulation() {
 	testITStaff();
 	testResearcher();
 	testStudent();
-	cout << "All the tests have been successful!\n\n";
+	cout << "\nAll the tests have been successful!\n\n";
 }
 
 
@@ -183,14 +183,14 @@ void Test::testShortJobQueue() {
 
 
 void Test::testUser() {
-	User user(700, 34);
+	User user(90, 34);
 
 	assert(user.getId() == 34);
 	assert(user.getBudgetSpent() == 0);
 
 	user.spendBudget(50);
 	assert(user.getBudgetSpent() == 50);
-	assert(user.getBudget() == 650);
+	assert(user.getBudget() == 40);
 
 	Scheduler sch;
 	Node node;
@@ -199,24 +199,50 @@ void Test::testUser() {
 	assert(job.nbHours == 1);
 	assert(job.nbNodes == 8);
 	assert(job.typeOfNode == 0);
+
+	cout << "There should not be enough budget to create this job:\n";
+	job = user.createJobAndSendTosendJobToJobQueue(8, 50, 0, sch.mjq, node, 10, sch);
+
+	User user2(600, 39, 10);
+	cout << "The instantaneous cap should be too low to create this job:\n";
+	job = user2.createJobAndSendTosendJobToJobQueue(8, 50, 0, sch.mjq, node, 10, sch);
+
+	User user3(900, 40);
+	cout << "The number of hours should be too high to create this job:\n";
+	job = user3.createJobAndSendTosendJobToJobQueue(17, 18, 0, sch.mjq, node, 10, sch);
+
+	cout << "The number of nodes should be too high to create this job:\n";
+	job = user3.createJobAndSendTosendJobToJobQueue(205, 3, 0, sch.mjq, node, 10, sch);
 }
 
 void Test::testITStaff() {
 	ITStaff itstaff(1000, 53);
 	assert(itstaff.getId() == 53);
 	assert(itstaff.getBudget() == 1000);
+	assert(itstaff.getInstantaneousCap() == 1680.0);
+
+	ITStaff itstaff2(1000, 54, 50.0);
+	assert(itstaff2.getInstantaneousCap() == 50.0);
 }
 
 void Test::testResearcher() {
 	Researcher researcher(800, 38);
 	assert(researcher.getId() == 38);
 	assert(researcher.getBudget() == 800);
+	assert(researcher.getInstantaneousCap() == 1600.0);
+
+	Researcher researcher2(800, 39, 55.0);
+	assert(researcher2.getInstantaneousCap() == 55.0);
 }
 
 void Test::testStudent() {
 	Student student(300, 95);
 	assert(student.getId() == 95);
 	assert(student.getBudget() == 300);
+	assert(student.getInstantaneousCap() == 100.0);
+
+	Student student2(300, 96, 10.0);
+	assert(student2.getInstantaneousCap() == 10.0);
 }
 
 

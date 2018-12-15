@@ -1,5 +1,5 @@
 #include "ITStaff.h"
 
-ITStaff::ITStaff(int newBudget, int newid) : User(newBudget, newid) {
+ITStaff::ITStaff(int newBudget, int newid, double cap) : User(newBudget, newid, cap) {
 
 }

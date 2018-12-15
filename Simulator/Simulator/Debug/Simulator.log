@@ -1,11 +1,42 @@
-﻿  EvaluatorOfScheduler.cpp
-  Input.cpp
-  Main.cpp
-  Test.cpp
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(37): warning C4101: 'out': unreferenced local variable
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(92): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(95): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(98): warning C4018: '<': signed/unsigned mismatch
-d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\test.cpp(111): warning C4101: 'eval': unreferenced local variable
+﻿  Node.cpp
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(76): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(77): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(78): warning C4244: '+=': conversion from '_Ty' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty=int
+          ]
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(82): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(83): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(84): warning C4244: '+=': conversion from '_Ty' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty=int
+          ]
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(88): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(89): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\node.cpp(90): warning C4244: '+=': conversion from '_Ty' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty=int
+          ]
+  Output.cpp
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(52): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(57): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(62): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(113): warning C4018: '<': signed/unsigned mismatch
+d:\cranfield work\requirements analysis and system design\simulator project\simulator\simulator\output.cpp(114): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Simulator.vcxproj -> D:\Cranfield work\Requirements Analysis and System Design\simulator project\Simulator\Debug\Simulator.exe

@@ -4,9 +4,9 @@ void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
 	// We check if the time is possible within the week
 	assert(time >= 0 && time <= 168);
 
-	// We randomly choose which user will submit a job at this time ad what job it will be
+	// We randomly choose which user will submit a job at this time and what job it will be
 	if (time < 104) {
-		// The jobs are submitted to the short, medium and large queues
+		// The jobs are submitted to the short, medium and large queues because we are before Friday 5pm
 		// We choose randomly the queue that will be used, with 1/2 chance for the short, 1/4 for the medium and 1/4 for the large
 		int typeQueue = rand() % 4;
 		if (typeQueue == 3)
@@ -20,7 +20,7 @@ void Input::timeStep(int time, UsersGenerator &ug, Scheduler &sch, Node &node) {
 			startJobsInJobQueue(time, ug, sch, node, sch.ljq);
 	}
 	else {
-		// The jobs are submitted to the huge queue
+		// The jobs are submitted to the huge queue because we are after Friday 5pm
 		startJobsInJobQueue(time, ug, sch, node, sch.hjq);
 	}
 }
@@ -38,8 +38,9 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 			int nbOfNodes = getNbOfNodes(node, jq);
 			int nbOfHours = getNbOfHours(3, jq);
 
-			// If the duration of a job starting before Friday 5pm makes it last after Friday 5pm, it is not accepted so that the machine is free for the weekend queue
-			if (time >= 104 || time + nbOfHours < 104)
+			// If the duration of a job starting before Friday 5pm makes it last after Friday 5pm, 
+			// it is not accepted so that the machine is free for the weekend queue
+			if (time >= 104 || time + nbOfHours <= 104)
 				ug.ITStaffList[itStaff].createJobAndSendTosendJobToJobQueue(nbOfNodes, nbOfHours, typeNode, jq, node, time, sch);
 			else
 				cout << "The job lasts too long to be started before Friday 5pm\n";
@@ -54,8 +55,9 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 			int nbOfNodes = getNbOfNodes(node, jq);
 			int nbOfHours = getNbOfHours(3, jq);
 
-			// If the duration of the job makes it last after Friday 5pm, it is not accepted so that the machine is free for the weekend queue
-			if (time >= 104 || time + nbOfHours < 104)
+			// If the duration of the job makes it last after Friday 5pm,
+			// it is not accepted so that the machine is free for the weekend queue
+			if (time >= 104 || time + nbOfHours <= 104)
 				ug.ResearcherList[researcher].createJobAndSendTosendJobToJobQueue(nbOfNodes, nbOfHours, typeNode, jq, node, time, sch);
 			else
 				cout << "The job lasts too long to be started before Friday 5pm\n";
@@ -70,8 +72,9 @@ void Input::startJobsInJobQueue(int time, UsersGenerator &ug, Scheduler &sch, No
 			int nbOfNodes = getNbOfNodes(node, jq);
 			int nbOfHours = getNbOfHours(3, jq);
 
-			// If the duration of the job makes it last after Friday 5pm, it is not accepted so that the machine is free for the weekend queue
-			if (time >= 104 || time + nbOfHours < 104)
+			// If the duration of the job makes it last after Friday 5pm,
+			// it is not accepted so that the machine is free for the weekend queue
+			if (time >= 104 || time + nbOfHours <= 104)
 				ug.StudentList[student].createJobAndSendTosendJobToJobQueue(nbOfNodes, nbOfHours, typeNode, jq, node, time, sch);
 			else
 				cout << "The job lasts too long to be started before Friday 5pm\n";
@@ -94,6 +97,7 @@ int Input::getNbOfNodes(Node &node, JobQueue &jq) {
 int Input::getNbOfHours(int typeOfQueue, JobQueue &jq) {
 	assert(typeOfQueue >= 0 && typeOfQueue <= 3);
 
+	// We decide that the users will use each queue appropriately
 	int nbHours;
 	if (typeOfQueue == 0)
 		nbHours = 1;

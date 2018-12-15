@@ -12,7 +12,7 @@ public:
 	// Returns the job queues
 	vector<Job> getJobQueue();
 
-	// Add an element to the job queue
+	// Add a job to the job queue
 	void addToJobQueue(Job job);
 
 	// Remove the ith element of the job queues,

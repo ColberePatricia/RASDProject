@@ -22,7 +22,7 @@ public:
 	// We represent each set of nodes for each hour of the week,
 	// with 0 if the node is free, 1 if it is used
 	// traditionalNodes =  Matrix(nbOfHoursPerWeek, nbOfTraditionalNodes);
-	// The Matrix class used is being reused from an exercise correction in c++ course
+	// The Matrix class used is being reused from an exercise correction in the C++ course
 	Matrix traditionalNodes;
 	Matrix acceleratedNodes;
 	Matrix specializedNodes;

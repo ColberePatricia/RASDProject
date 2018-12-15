@@ -3,7 +3,7 @@
 
 
 double EvaluatorOfScheduler::evaluation() {
-	clock_t t1, t2;
+	clock_t startTime, endTime;
 	double duration;
 
 	Scheduler sch;
@@ -14,7 +14,7 @@ double EvaluatorOfScheduler::evaluation() {
 		sch.mjq.addToJobQueue(job);
 	}
 
-	t1 = clock();
+	startTime = clock();
 
 	// We do the standard example to see how long the scheduler takes
 	// We do this 1000 times to get a better approximation
@@ -24,8 +24,8 @@ double EvaluatorOfScheduler::evaluation() {
 	}
 
 
-	t2 = clock();
-	duration = 0.001 * (t2 - t1) / (double)CLOCKS_PER_SEC;
+	endTime = clock();
+	duration = 0.001 * (endTime - startTime) / (double)CLOCKS_PER_SEC;
 
 	cout << "The scheduler has taken " << duration << " seconds to operate on a standard example\n\n";
 	return duration;
