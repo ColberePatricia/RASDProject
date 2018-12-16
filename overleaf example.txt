@@ -1,9 +1,11 @@
 \documentclass [10 pt, a4 paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
+\usepackage{graphicx}
 
-\title{softwareReport}
-\author{pat.jvs }
+
+\title{RASD and STQA Combined Assignment}
+\author{Patricia Colbere \\ Cranfield University}
 \date{December 2018}
 
 \begin{document}
@@ -13,12 +15,318 @@
 \tableofcontents
 
 \begin{abstract}
-    Hello this is my abstract
+    In this report we try to realise a simulation which models a computing platform with a job control system. In order to approximate this computing platform, we will simulate its various users as well as the jobs they send. The users simulated will be divided into three categories: IT staff members which are the biggest users, researchers which are the second biggest users, and students which are the smallest users. We will then also simulate treating them in the queue that corresponds to the job. There are in total four job queues: a short one, a medium one, a large one and a huge one. The huge job queue is working only after Friday 5pm and before Monday 9am. In order to make the results of the simulation more clear regarding these queues, we will consider the beginning of the week to be on Monday 9am. We will then consider the simulation for 168 hours in order to have a full week finishing the next Monday. Therefore, our results will first show the jobs treated by the three smallest queues and in the end the jobs treated by the huge queue. The resources treating the jobs are nodes, which exist in three types. It is a scheduler that chooses which job is treated when and by which resources. We will be using a first-in first-out scheduler in order to simplify the simulation.
+
+
 \end{abstract}
 
 
 
 \chapter{Introduction}
+We will be studying the simulation of the job control system. The jobs will take a certain amount of nodes during a certain time, depending on each job. These nodes can be traditional, accelerated or specialized. In a real computing platform, there are also storing devices, however since we are only doing a simulation we did not find it necessary to represent the storing devices. In reality, the nodes also have multiple processors, but in order to simplify this simulation we did not represent the processors, as we considered that one node could not work on different jobs at the same time by partitioning its processors.
+\\ \\
+What matches the resources of the platform to the requests of the users is the scheduler. To have a simpler simulation, this scheduler is first-in first-out, but that characteristic can easily be replaced in order to see how a more efficient scheduler could affect the system. Indeed, this scheduler is isolated and it can get evaluated to better see its performances. The results of the simulation get shown once it has done the whole week.
+\\ \\
+We will be explaining our choices in design in more detail in the next part. The following part will better explain the software requirements to further justify our choices in design as corresponding to these requirements. Then we will show our test plan. Indeed we also launch the tests of the simulation at the end of it in order to check that the results are meaningful and that the simulation is working as expected. Finally we will see the code coverage of these tests as well as their results.
+
+
+
+
+
+\chapter{Design employed}
+% use case diagrams detailing the operation of the simulation system
+In order to better explain the design we have chosen to apply to this software, we will be presenting five use case diagrams from different perspectives and with different levels of precision for the operations of the job control simulation.
+
+\section{From inside the simulation}
+First we will be explaining how our program works from the perspective of the users of the simulation.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{UCD1.jpg}
+\caption{\label{fig:image} Use case diagram of the users inside the simulation}
+\end{figure}
+
+\noindent
+These users can be classified into three categories: IT staff members, who are the biggest users, researchers, who are the second biggest users, and students, who are the smallest users.
+In the simulation, we have decided for our examples to make more students than researchers and more researchers than students, but this is a parameter that can be chosen by the users of the simulation. Each class of users has the same rights, it is only their parameters which may vary: the bigger users have a bigger budget and a bigger instantaneous cap. Actually only the students can be prevented from creating a job by their instantaneous cap. We have decided that their cumulative cap is represented by their lower budget, as the simulation only runs for a week.
+\\ \\
+In the use case diagram we can see that the users we simulate in our system can do various actions. We allow them access to their parameters but they cannot be changed by them for obvious security reasons. They can also access the computing system to create a job. They can finally send a job they created to a job queue of their choice. The job has a corresponding number of nodes it will be using, for a certain number of hours with a specific type of nodes. These parameters are decided directly by the simulated users when they create a job. The parameters will also result in a certain budget that will have to be spent by the users if they want to send the job to a queue, with each queue also having a different cost per hour.
+
+
+
+\section{From outside the simulation}
+Now we will explain how the users of our software can access and interact with our program, and what the software does in response. These users are the actual IT staff members who would be testing our simulation. We will begin by showing a rather broad view of the actions a user of our software can take and then explain some rather complicated actions more in detail, including how it works in the simulation.
+\\ \\
+We can see from the first diagram below that the user has a rather wide variety of actions possible. He can evaluate the scheduler, as this is a crucial feature of the simulator, because the scheduler is a capital factor of performance of the system. He can also change the scheduler. Indeed the program has been made so that the scheduler is a single class with a single function, so that the user of the simulation only has this unique function to change if he wants to use the simulation with another scheduler. That is why the evaluation of the scheduler is relevant even if we are using a rather inefficient first-in first-out scheduler here.
+\\ \\
+Before the simulation starts, the user can of course choose the parameters that will be used inside of the simulation. This will be better explained on the diagram presented in fig. 2.3. Once the simulation has ended, the user can also access the results of the simulation, which correspond to many outputs that will be detailed in fig. 2.4. Finally, to verify that those results have meaning, the user can check the tests of the simulation and make sure that all of them have passed, so that the code should be giving appropriate results.
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{UCD2.jpg}
+\caption{\label{fig:image} General use case diagram of the users of the simulation}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.2\textwidth]{UCD4.jpg}
+\caption{\label{fig:image} Use case diagram of the users of the simulation detailing their choice of parameters for the simulation}
+\end{figure}
+
+\clearpage
+\noindent
+When he starts the simulation, the user has to select parameters. He has to choose the set of simulated users that will be observed. In order to generate this set of simulated users, he can choose the number of simulated users from each class: the number of IT staff members, the number of researchers and the number of students. For each of these simulated users, he also needs to choose a budget. In order to make the generation of a bigger amount of users less tedious and more random than with a single input file, we have added the possibility for the user not to choose the budget of each user generated. Indeed the user can also choose to keep the default values for the budgets of each class. We have put a fixed budget for the IT staff members and the students, but have added a random variable to the budget of the researchers to represent the fact that they can have additional budget granted to them. This way we can also test more functionalities without the need of an input. \\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.2\textwidth]{UCD3.jpg}
+\caption{\label{fig:image} Use case diagram of the users of the simulation detailing the outputs they can get from the simulation}
+\end{figure}
+
+\\
+\noindent
+Additionaly, the user of the simulation can view the results of the simulation in details. More precisely he can obtain the number of jobs processed in each of the three queues, get the actual number of machine hours that each job consummed, get the utilisation ratio, as well as the prices paid by the users, their average wait time for each of the four job queues, the average turnaround time ratio, the economic balance of the whole center, and finally we have added the possibility to view the state of each node during the simulated week.
+\\ \\
+In order to show this, we have chosen to represent each of the three types of nodes: traditional, accelerated and specialized, by a matrix. We have recuperated the matrix class we use as well as a vector class used by this matrix class from an exercise of the course of C++. For our representation, For our representation, we have chosen the lines of the matrices to represent each a time step of one hour during the week. As there are 168 hours in a week, this is the number of rows our three matrices possess. The numbers of columns of our matrices is the number of nodes chosen for each type. In total there are always at least 128 nodes, which we have respected in our simulation where we chose by default 64 traditional nodes, 32 accelerated nodes and 32 specialized nodes, which makes it 128 nodes in total.
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.2\textwidth]{UCD5.jpg}
+\caption{\label{fig:image} Use case diagram of the users of the simulation detailing the process in the simulation}
+\end{figure}
+\\
+
+\noindent
+When the user of the simulator chooses the parameters, it is to generate a set of users. These simulated users produce requests during the simulated weeks. Each user has a probability of sending a job to a job queue depending on an exponential distribution. The size of the job, so the number of nodes used, also depends on an exponential distribution. The bigger users have a bigger chance of sending a request, so that at the end of the week, on average, they will have sent more requests. We used the exponential distribution so that the jobs would have more chance to be sent at a short interval, and so that bigger jobs happen more often than the smaller ones. We determine the duration of the job depending on the queue it is sent to, with a random variable so that not every job of a same queue has the same duration.
+\\ \\
+Once the simulated users have sent their requests to a chosen job queue, the scheduler takes each job and associates it with the necessary resources: the nodes, of the type requested. The nodes are used as soon as possible from the time the scheduler gets the request. For this simulation, since we are counting the time in hours, we do not simulate any delay of the scheduler or in the taking of the nodes. The scheduler directly links the job to the right resources, which means that the corresponding nodes are then used appropriately.
+\\ \\
+\clearpage
+For this simulation we have chosen to consider the use of the software by the actual IT staff members who will use it, and inside of the simulation by the generated users. The actual users start the simulation with a set of parameters, and in this simulation the generated users send requests that are treated thanks to the scheduler linking the right job to the right nodes.
+
+
+
+
+\chapter{Software requirements}
+% appropriate models to represent the requirements (functional and non-functional); it is suggested to create a structured model, a behavioural model and a data flow model to capture the requirements of the simulation system.
+
+\section{Functional model of the requirements}
+\subsection{UML class diagram}
+We have chosen to represent the requirements with a UML class diagram, which is a structured model, because we find it useful to code in a language like C++ that can be considered object oriented. It is also a good way to present the code with the different classes, their attributes and their methods and functions. It also shows how each class interacts with the others.
+\\ \\
+First we will see each class to present it, before showing how they are part of the software as a whole.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.2\textwidth]{Main.jpg}
+\caption{\label{fig:image} Class diagram of Main}
+\end{figure}
+\\
+
+\noindent
+The Main class is what launches the simulator. It also starts the tests and the evaluation of the scheduler if that is necessary.
+
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.3\textwidth]{IncludeFiles.jpg}
+\caption{\label{fig:image} Class diagram of InclideFiles}
+\end{figure}
+\\
+
+\noindent
+The IncludeFiles class is a way to keep the dependencies used by every other class in a single file. It could also contain a function or a variable needed by most classes if it becomes needed.
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.3\textwidth]{Vector.jpg}
+\caption{\label{fig:image} Class diagram of Vector}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.3\textwidth]{Matrix.jpg}
+\caption{\label{fig:image} Class diagram of Matrix}
+\end{figure}
+\\
+
+\noindent
+The Matrix class is used to represent the nodes as was previously explained. Itself, it uses the vector class. These classes were both taken from an exercise of the course of C++. There is one matrix for each type of node, which means one for the traditional, one for the accelerated and one for the specialized nodes.
+
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.3\textwidth]{Output.jpg}
+\caption{\label{fig:image} Class diagram of Output}
+\end{figure}
+\\
+
+\noindent
+The Output class is used by the Main class in order to show the results of the simulation to the actual user as we have described in the first chapter, in fig. 2.4. The user sees these results at the end of the simulation.
+
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.3\textwidth]{Input.jpg}
+\caption{\label{fig:image} Class diagram of Input}
+\end{figure}
+\\
+
+\noindent
+The Input class is used by the Main class to make the simulation progress in time. Its function timeStep makes everything needed for the time to go forward one hour. Indeed it chooses which simulated user send which job request, what kind of job request and to which job queue. To do this, it uses its other functions.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{Sch.jpg}
+\caption{\label{fig:image} Class diagram of Scheduler}
+\end{figure}
+\\
+
+\noindent
+The Scheduler class is used to link the jobs with the proper resources. When jobs are sent to a job queue by a user, it is the scheduler that decides which job is treated first and sends it to be taken care of by the right resources. Here, to have a simpler simulation, we have a first-in first-out scheduler.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{EvalOfSch.jpg}
+\caption{\label{fig:image} Class diagram of EvaluatorOfScheduler}
+\end{figure}
+\\
+
+\noindent
+The EvaluatorOfScheduler class evaluates the scheduler we have chosen for our implementation of the software. It tells us how long the scheduler treats a standard problem. To get a better approximation, this problem is repeated 1000 times and the result of the duration of the treatment is divided accordingly.
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.2\textwidth]{Job.jpg}
+\caption{\label{fig:image} Class diagram of Job}
+\end{figure}
+\\
+
+\noindent
+The Job class represents the jobs that are created by the users. Its attributes give the information needed for the right resources to be taken in order to treat each job. A job can be created by any simulated user if they have enough budget.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{JobQueues.jpg}
+\caption{\label{fig:image} Class diagram of the JobQueues}
+\end{figure}
+\\
+
+\noindent
+The JobQueue class is used by the scheduler to choose which job gets treated first. There are actually four job queues: a short one, a medium one, a large one and a huge one. Since they have all their attributes and functions in common, and are only different in the way these attributes are initialized, we have created a JobQueue class from which four classes, corresponding each to a specific job queue, inherits.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.2\textwidth]{Node.jpg}
+\caption{\label{fig:image} Class diagram of Node}
+\end{figure}
+\\
+
+\noindent
+The Node class contains three matrices to represent the different nodes as we have previously explained. It represents the resources of the system. In each matrix, a value of zero means that the node has not been used, while a value of one means that the node has been used. It lets us see the advances of our simulation and how the resources are used, as well as what resources we can use at a certain point in time. The nodes treat the jobs. Indeed, at first, the nodes are all initialized to zero, but once a job is treated the corresponding nodes get the value of one.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.2\textwidth]{UsersGenerator.jpg}
+\caption{\label{fig:image} Class diagram of UsersGenerator}
+\end{figure}
+\\
+
+\noindent
+The UsersGenerator class lets us generate a set of users accordingly to the parameters chosen by the user of the simulation. To represent each set of users while respecting their classes, three vectors are created: a vector of ITStaff, a vector of Researcher and a vector of Student. Each vector contains the users generated of the corresponding class.
+
+\\ \\
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.3\textwidth]{Users.jpg}
+\caption{\label{fig:image} Class diagram of the Users}
+\end{figure}
+\\
+
+\noindent
+The User class is the base class for the simulated users. The ITStaff, Researcher and Student classes all inherit from it. Like for the job queues, they all have the same attributes and functions but those attributes have different values. It is these classes that can generate jobs and send them to a queue of their own choice.
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{Test.jpg}
+\caption{\label{fig:image} Class diagram of Test}
+\end{figure}
+\\
+
+\noindent
+The Test class is used to test every other class. While there are tests inside of the other classes, it is this class that contains the unit testing. It has a function testSimulation that runs all of the tests. It this one passes it means that all of our tests pass. We coded each function with assert so that if a test fails, the program cannot finish running and we do not get false results unknowingly.
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=1.3\textwidth]{umlDiagram.jpg}
+\caption{\label{fig:image} Class diagram of the project}
+\end{figure}
+\\
+
+\noindent
+Every class depends on the IncludeFiles class but to make this diagram easier to read, we have not represented these dependencies. In this diagram we can see that the Main class uses only the Input and Output classes to have access to all the classes it actually needs. It also uses the Input to progress trough each time step and the Output to show the final results of the simulation. Of course it is also the Main class that runs the evaluation of the scheduler as well as the various tests of the other classes. The scheduler itself manages the link between the resources, so the nodes, and the job queues containing the jobs sent by the users. The users themselves exist because they are generated by UsersGenerator. Many of the links between class are indirect, but it is indeed the users who create the jobs before sending them to the scheduler.
+\\ \\
+In order to get proper results, during one run of the simulation, there is only one instance of the scheduler, so one instance of each queue used. There is also a single instance of the nodes represented by unique matrices. The UsersGenerator is also unique in order to keep the same users during the whole simulation.
+
+
+
+
+
+\subsection{Sequence diagram}
+
+
+
+\section{Non-functional models of the requirements}
+\subsection{Data flow model}
+
+
+
+
+
+
+\chapter{Test plan}
+% Explain what needs to be tested and how you will implement the tests. Ensure you have adequately considered both lower level unit and integration testing, and explain your choice of test inputs.
+
+\chapter{Code coverage and test results}
+% Specify the percentage coverage of statement, decision and path coverage for each component, and thereby make a statement of the coverage across your whole application.
+
+% show Output file (appendice)
+% Explain makefile
+% doxygen
+% Identify the quality metrics you have used in your system and demonstrate how they have influenced your design. You are free to concentrate on any quality measures that you think are suitable.
+
+
+
+
 \section{Section title}
 \subsection{SubSect title}
 \subsubsection{Sub Sub section title}
@@ -50,10 +358,6 @@ The results are shown in table 1
     \label{tab:my_label}
 \end{table}
 
-
-
-\chapter{Second chapter}
-\chapter{Third chapter}
 
 
 \end{document}
