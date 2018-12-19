@@ -4,6 +4,7 @@
 User::User(double userBudget, int userId, double cap) {
 	assert(userBudget > 0);
 	assert(userId >= 0);
+	assert(cap > 0);
 
 	budget = userBudget;
 	id = userId;

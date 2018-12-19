@@ -1,0 +1,74 @@
+\hypertarget{class_job_queue}{}\section{Job\+Queue Class Reference}
+\label{class_job_queue}\index{Job\+Queue@{Job\+Queue}}
+Inheritance diagram for Job\+Queue\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_job_queue}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_job_queue_a6d530bf47827ca5b7fd1733908206d9d}\label{class_job_queue_a6d530bf47827ca5b7fd1733908206d9d}} 
+vector$<$ \mbox{\hyperlink{class_job}{Job}} $>$ {\bfseries get\+Job\+Queue} ()
+\item 
+\mbox{\Hypertarget{class_job_queue_aa21eaa87e05aca2ff536effe4fae1f36}\label{class_job_queue_aa21eaa87e05aca2ff536effe4fae1f36}} 
+void {\bfseries add\+To\+Job\+Queue} (\mbox{\hyperlink{class_job}{Job}} job)
+\item 
+\mbox{\Hypertarget{class_job_queue_a40acca49c00bd568337e5e99cee2c936}\label{class_job_queue_a40acca49c00bd568337e5e99cee2c936}} 
+void {\bfseries remove\+From\+Job\+Queue} (int i)
+\item 
+\mbox{\Hypertarget{class_job_queue_a337fbbcbcd9fdc0d7b4cdf1445540eeb}\label{class_job_queue_a337fbbcbcd9fdc0d7b4cdf1445540eeb}} 
+void {\bfseries number\+Of\+Jobs\+Processed\+Plus1} ()
+\item 
+\mbox{\Hypertarget{class_job_queue_a82772a0000d5ad7380950c88c8718d01}\label{class_job_queue_a82772a0000d5ad7380950c88c8718d01}} 
+void {\bfseries add\+New\+Wait\+Time} (int time\+Waited)
+\item 
+\mbox{\Hypertarget{class_job_queue_ad410dafe929327135889e271bd6a2d23}\label{class_job_queue_ad410dafe929327135889e271bd6a2d23}} 
+void {\bfseries add\+New\+Run\+Time} (int time\+Run)
+\item 
+\mbox{\Hypertarget{class_job_queue_a38e08b929dda86f26a29c2c013905b74}\label{class_job_queue_a38e08b929dda86f26a29c2c013905b74}} 
+double {\bfseries get\+Average\+Wait\+Time} ()
+\item 
+\mbox{\Hypertarget{class_job_queue_a3c386ff5559788ce23ee86dc2b69c93b}\label{class_job_queue_a3c386ff5559788ce23ee86dc2b69c93b}} 
+double {\bfseries get\+Average\+Run\+Time} ()
+\item 
+\mbox{\Hypertarget{class_job_queue_a4965c12a271ee4cb1c9fadfcee2b51d3}\label{class_job_queue_a4965c12a271ee4cb1c9fadfcee2b51d3}} 
+double {\bfseries get\+Average\+Turnaround\+Time\+Ratio} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_job_queue_a2df2ae8313ca2248d59f68158fa64de5}\label{class_job_queue_a2df2ae8313ca2248d59f68158fa64de5}} 
+vector$<$ \mbox{\hyperlink{class_job}{Job}} $>$ {\bfseries job\+Queue\+Vector}
+\item 
+\mbox{\Hypertarget{class_job_queue_abcf8363998ac230e81b6e84d13a0da05}\label{class_job_queue_abcf8363998ac230e81b6e84d13a0da05}} 
+double {\bfseries cost\+Per\+Machine\+Hour}
+\item 
+\mbox{\Hypertarget{class_job_queue_aa14e93d8289f0cbffdd1e7fdb5991e00}\label{class_job_queue_aa14e93d8289f0cbffdd1e7fdb5991e00}} 
+int {\bfseries max\+Nb\+Of\+Hours}
+\item 
+\mbox{\Hypertarget{class_job_queue_aec23b24c5671b66aeb8bcb619f390ab9}\label{class_job_queue_aec23b24c5671b66aeb8bcb619f390ab9}} 
+int {\bfseries max\+Nb\+Of\+Nodes}
+\item 
+\mbox{\Hypertarget{class_job_queue_aee18b3b19b0faf073e1399a3725d92f7}\label{class_job_queue_aee18b3b19b0faf073e1399a3725d92f7}} 
+int {\bfseries number\+Of\+Jobs\+Processed}
+\item 
+\mbox{\Hypertarget{class_job_queue_acc66a3f47ac7bbec772f0c5ea5d699c3}\label{class_job_queue_acc66a3f47ac7bbec772f0c5ea5d699c3}} 
+vector$<$ int $>$ {\bfseries wait\+Time}
+\item 
+\mbox{\Hypertarget{class_job_queue_a3a9b97d1a3b1ee0da81747335a0a5d25}\label{class_job_queue_a3a9b97d1a3b1ee0da81747335a0a5d25}} 
+vector$<$ int $>$ {\bfseries run\+Time}
+\item 
+\mbox{\Hypertarget{class_job_queue_ab6876a626f1767a5bb7e63a65ce1faef}\label{class_job_queue_ab6876a626f1767a5bb7e63a65ce1faef}} 
+double {\bfseries lambda}
+\item 
+\mbox{\Hypertarget{class_job_queue_a2b9e866b703b97a2fcec2ef289a1f00a}\label{class_job_queue_a2b9e866b703b97a2fcec2ef289a1f00a}} 
+int {\bfseries exponential\+Distribution\+Factor}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cranfield work/\+Requirements Analysis and System Design/simulator project/\+Source\+Code/Job\+Queue.\+h\item 
+D\+:/\+Cranfield work/\+Requirements Analysis and System Design/simulator project/\+Source\+Code/Job\+Queue.\+cpp\end{DoxyCompactItemize}

@@ -109,6 +109,7 @@ void Test::testUsersGenerator() {
 
 void Test::testEvaluatorOfScheduler() {
 	EvaluatorOfScheduler eval;
+	eval.evaluation();
 }
 
 
